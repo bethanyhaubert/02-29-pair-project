@@ -1,0 +1,14 @@
+<h1>Bechdel Gallery</h1>
+
+<% if @bechdel_pass != nil %>
+	<ul>
+	<% @bechdel_pass.each do |movie| %>
+		<li>
+		<a href="/movies/<% movie.get_id %>/view">
+		<img src="<%= movie.get_image %>"></a>
+		<li>
+	<%end%>
+	</ul>
+<% elsif @bechdel_pass == nil %>
+<p>No Bechdel results yet.</p>
+<%end%>
