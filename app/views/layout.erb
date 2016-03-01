@@ -9,18 +9,24 @@
 
   <nav>
 	 <ul>
-	 <% if @current_user == nil %>
+	 		<li>Search:
+	 			<form action="/search" method="get">
+	 				<input type="text" name="search" placeholder="search for a movie">
+	 				<input type="submit" value="Search">
+	 			</form>
+
+	 	<% if @current_user == nil %>
 		 	<li><a href="/users/new"> Create account</a></li>
 
 		 	<li>Login:
-		 	<form action="/logins" method="post">
-			
-			    <input type="text" name="email" placeholder="email@address.com">
+			 	<form action="/logins" method="post">
+				
+				    <input type="text" name="email" placeholder="email@address.com">
 
-			    <input type="password" name="password" placeholder="password">
+				    <input type="password" name="password" placeholder="password">
 
-			  	<input type="submit">
-			</form>
+				  	<input type="submit">
+				</form>
 			</li>
 
 	<% else %>
