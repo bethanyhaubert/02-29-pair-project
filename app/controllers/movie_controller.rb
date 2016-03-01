@@ -4,8 +4,8 @@ MyApp.get "/" do
 end
 
 MyApp.post "/movies/search" do
-	@search = params["search"]
-	redirect "/movies/#{@search}/results"
+	@movie_search = params[:search]
+	redirect "/movies/#{@movie_search}/results"
 end
 
 MyApp.get "/movies/:search/results" do
@@ -19,20 +19,15 @@ end
 
 MyApp.post "/movies/create" do
 	@movie = Movie.new
-	@movie.title = params[:title]
-	@movie.director = params[:director]
+	@movie.title = params[:title].capitalize
+	@movie.director = params[:director].capitalize
 	@movie.image = params[:image]
 	@movie.critic_rating = params[:rating]
-
-	if @movie.is_valid == true
-	 	@movie.save
-		redirect "/movies/#{@movie.id}/view"
-	else
-		@error_object = @movie
-		erb :"error"
-	end
+	@movie.save
+	redirect "/movies/#{@movie.id}/view"
 end
 
 MyApp.get "/movies/:id/view" do
+	@movie = Movie.find_by_id(params[:id])
 	erb :"movies/view"
 end
