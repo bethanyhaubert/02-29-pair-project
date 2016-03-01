@@ -3,15 +3,15 @@
 <h2> <%= @movie.title %> </h2>
 <img src="<%= @movie.image %>">
 
+<% if @movie.bechdel_result == nil %>	
+	<p> This movie has not yet been rated using the Bechdel test. </p>
 
-<% if @movie.bechdel_result == true %>
+<% elsif @movie.bechdel_result == true %>
 	<p> This movie passes the Bechdel test. </p>
 
-<% elsif @movie.bechdel_result != true %>
+<% else %>
 	<p> This movie does not pass the Bechdel test. </p>
 
-<% else %>	
-	<p> This movie has not yet been rated using the Bechdel test. </p>
 <% end %>
 
 
