@@ -16,7 +16,7 @@ gem 'sinatra-redirect-with-flash'
 
 gem "minitest-rg"
 
-gem "dotenv", :groups => [:development, :test]
+gem "dotenv"
 
 gem "rake"
 gem "database_cleaner"
