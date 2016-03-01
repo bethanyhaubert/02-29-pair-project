@@ -7,7 +7,7 @@ class Movie < ActiveRecord::Base
 	#
 	#Returns list of movie objects.
 	def Movie.movie_search(search_text)
-	 	movie_match = Movie.where({"title" => search_text})
+	 	movie_match = Movie.where({"title" => search_text.capitalize})
 		if movie_match.empty?
         	return nil
     	else
