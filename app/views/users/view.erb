@@ -1,0 +1,22 @@
+<h1> User profile </h1>
+
+<h2> <%= @user.name %> </h2>
+
+
+<h3>Edit user:</h3>
+
+<form action="/users/<%= @user.id %>/edit" method="post">
+	Name:
+	  <input type="text" name="name" value="<%= @user.name %>"> </br>
+	Email Address:
+	  <input type="text" name="email" value="<%= @user.email %>"></br>
+	Password:
+	  <input type="password" name="password" value="<%= @user.password%>"></br>
+
+	  <input type="submit"></br> 
+</form>
+
+<form action="users/<%= @user.id %>/delete" method="post">
+
+	<input type="submit" value="Delete">
+</form>
