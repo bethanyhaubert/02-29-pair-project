@@ -1,3 +1,7 @@
+MyApp.before "/*" do
+	@current_user = User.find_by_id(session["user_id"])
+end
+
 MyApp.get "/" do
 	@random_movie = "http://techno2013.ucoz.com/dhoom2-18-1.jpg"
 	erb :"movies/home"

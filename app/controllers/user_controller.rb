@@ -1,6 +1,6 @@
-MyApp.before "/users/:user_id/*" do
+MyApp.before "/users/:id/*" do
 	@current_user = User.find_by_id(session["user_id"])
-	@user = User.find(params[:user_id])
+	@user = User.find(params[:id])
   	if @current_user == nil
   		session["temporary_error_message"] = "You must login first"  
   	redirect "/"
@@ -27,6 +27,7 @@ MyApp.post "/users/create" do
 end
 
 MyApp.get "/users/:id/view" do
+	@user = User.find(params[:id])
    erb :"users/view"
 end
 

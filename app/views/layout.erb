@@ -20,7 +20,7 @@
 		 	<li><a href="/users/new"> Create account</a></li>
 
 		 	<li>Login:
-			 	<form action="/logins" method="post">
+			 	<form action="/login" method="post">
 				
 				    <input type="text" name="email" placeholder="email@address.com">
 
@@ -31,7 +31,9 @@
 			</li>
 
 	<% else %>
-		  	<li><a href="/users/<%@user.id %>/view"> Profile </a></li>
+		  	<li>
+		  		<a href="/users/<%= @current_user.id %>/view"> Profile </a>
+		  	</li>
 
 
 			<li><a href="/logout"> Logout </a></li>
@@ -41,7 +43,6 @@
 
 	 </ul>
 	</nav>
-  <!-- This is what a code comment in HTML looks like. -->
 
   <!-- The `yield` below is where the contents of a view file are put. -->
   <!-- Then the combined layout + view is sent back to the client. -->
