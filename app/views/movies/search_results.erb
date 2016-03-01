@@ -1,0 +1,12 @@
+<% if @list_of_movies != nil %>
+	<ul>
+	<% @list_of_movies.each do |movie| %>
+		<li>
+			<a href="/movies/<%= movie.id %>/view"><%= movie.title %></a>
+		</li>
+	<%end%>
+	</ul>
+
+<% else %>
+	<p>No movies match your search.</p>
+<%end%>

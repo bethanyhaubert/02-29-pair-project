@@ -4,9 +4,13 @@ MyApp.get "/" do
 end
 
 MyApp.post "/movies/search" do
+	@search = params["search"]
+	redirect "/movies/#{@search}/results"
 end
 
-MyApp.get "/movies/search/results" do
+MyApp.get "/movies/:search/results" do
+	@list_of_movies = Movie.movie_search(params[:search])
+	erb :"movies/search_results"
 end
 
 MyApp.get "/movies/new" do
