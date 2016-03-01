@@ -16,4 +16,12 @@ MyApp.post "/results/:id/add" do
 end
 
 MyApp.get "/results/:id/edit" do
+	@movie = Movie.find_by_id(params[:id])
+	@result =  Result.where({"movie_id" => @movie.id })
+	@result.q1 = params[:q1]
+	@result.q2 = params[:q2]
+	@result.q3 = params[:q3]
+	@result.user_id = @current_user.id
+	@result.save
+  redirect "/movies/#{@movie.id}/view"
 end

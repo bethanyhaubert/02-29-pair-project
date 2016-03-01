@@ -3,16 +3,49 @@
 <h2> <%= @movie.title %> </h2>
 <img src="<%= @movie.image %>">
 
-<h3>Add/edit Bechdel rating:</h3>
-	<p>Please select the criteria that this movie fulfills:</p>
 
-<form action="/results/<%= @movie.id %>/add" method="post">
-	<ol>
-	  <li>The movie has to have at least two women in it: <input type="radio" name="q1" value="true"></li>
-	  <li>Those women talk to each other: <input type="radio" name="q2" value="true"></li>
-	  <li>About something besides a man:<input type="radio" name="q3" value="true"></li>
-	</ol>
+<% if @movie.bechdel_result == true %>
+	<p> This movie passes the Bechdel test. </p>
 
-	<input type="submit">
-  
-</form>
+<% elsif @movie.bechdel_result != true %>
+	<p> This movie does not pass the Bechdel test. </p>
+
+<% else %>	
+	<p> This movie has not yet been rated using the Bechdel test. </p>
+<% end %>
+
+
+<% if @movie.bechdel_result == nil %>
+	<h3>Add Bechdel rating:</h3>
+		<p>Please select the criteria that this movie fulfills:</p>
+
+	<form action="/results/<%= @movie.id %>/add" method="post">
+		<ol>
+		  <li>The movie has to have at least two women in it: <input type="radio" name="q1" value="true"></li>
+		  <li>Those women talk to each other: <input type="radio" name="q2" value="true"></li>
+		  <li>About something besides a man:<input type="radio" name="q3" value="true"></li>
+		</ol>
+
+		<input type="submit">
+	  
+	</form>
+
+<% else %>
+	<h3>Edit Bechdel rating:</h3>
+		<p>Please select the criteria that this movie fulfills:</p>
+
+	<form action="/results/<%= @movie.id %>/edit" method="post">
+		<ol>
+		  <li>The movie has to have at least two women in it: <input type="radio" name="q1" value="true"></li>
+		  <li>Those women talk to each other: <input type="radio" name="q2" value="true"></li>
+		  <li>About something besides a man:<input type="radio" name="q3" value="true"></li>
+		</ol>
+
+		<input type="submit">
+	  
+	</form>
+
+<% end %>
+
+
+
