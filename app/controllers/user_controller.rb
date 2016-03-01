@@ -8,7 +8,7 @@ MyApp.before "/users/:user_id/*" do
 end
 
 MyApp.get "users/new" do
-	er :"users/new"
+	erb :"users/new"
 end
 
 MyApp.post "users/create" do

@@ -6,6 +6,24 @@
 </head>
 
 <body>
+
+  <nav>
+	 <ul>
+	 <% if @current_user == nil %>
+		 	<li><a href="/users/create"> Create account</a></li>
+
+		 	<li><a href="/login"> Login </a></li>
+
+	<% else %>
+		  	<li><a href="/users/<%@user.id %>/view"> Profile </a></li>
+
+			<li><a href="/logout"> Logout </a></li>
+	<% end %>
+
+		<li><a href="/gallery"> Bechdel Gallery </a></li>
+
+	 </ul>
+	</nav>
   <!-- This is what a code comment in HTML looks like. -->
 
   <!-- The `yield` below is where the contents of a view file are put. -->
