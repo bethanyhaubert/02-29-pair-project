@@ -7,11 +7,11 @@ MyApp.before "/users/:user_id/*" do
 	end
 end
 
-MyApp.get "users/new" do
+MyApp.get "/users/new" do
 	erb :"users/new"
 end
 
-MyApp.post "users/create" do
+MyApp.post "/users/create" do
 	@user = User.new
 	@user.name = params[:name]
 	@user.email = params[:email]
@@ -19,23 +19,23 @@ MyApp.post "users/create" do
 
 	if @user.is_valid == true
 	 	@user.save
-		redirect "users/#{@user.id}/view"
+		redirect "/users/#{@user.id}/view"
 	else
 		@error_object = @user
 		erb :"error"
 	end
 end
 
-MyApp.get "users/:id/view" do
+MyApp.get "/users/:id/view" do
    erb :"users/view"
 end
 
-MyApp.post "users/:id/edit" do
+MyApp.post "/users/:id/edit" do
 	if @user == @current_user
 		@user.assign_attributes({name: params['name'], email: params['email'], password: params['password']})
 		if @user.is_valid == true
 			@user.save
-			redirect "users/#{@user.id}/view"
+			redirect "/users/#{@user.id}/view"
 		else
 			@error_object = @user
 			erb :"error"
@@ -45,7 +45,7 @@ MyApp.post "users/:id/edit" do
 	end
 end
 
-MyApp.post "users/:id/delete" do
+MyApp.post "/users/:id/delete" do
 	if @user == @current_user
 		@user.delete
   		erb :"success"
