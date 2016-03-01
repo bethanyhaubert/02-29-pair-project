@@ -12,10 +12,20 @@
 	 <% if @current_user == nil %>
 		 	<li><a href="/users/new"> Create account</a></li>
 
-		 	<li><a href="/login"> Login </a></li>
+		 	<li>
+		 	<form action="/logins" method="post">
+			
+			    <input type="text" name="email" placeholder="email@address.com">
+
+			    <input type="password" name="password" placeholder="password">
+
+			  	<input type="submit">
+			</form>
+			</li>
 
 	<% else %>
 		  	<li><a href="/users/<%@user.id %>/view"> Profile </a></li>
+
 
 			<li><a href="/logout"> Logout </a></li>
 	<% end %>
