@@ -8,12 +8,12 @@ MyApp.get "/" do
 end
 
 MyApp.post "/movies/search" do
-  @movie_search = params[:search]
+  @movie_search = params[:search].gsub(/\s+/,"_")
   redirect "/movies/#{@movie_search}/results"
 end
 
 MyApp.get "/movies/:search/results" do
-  @list_of_movies = Movie.movie_search(params[:search])
+   @list_of_movies = Movie.movie_search(params[:search].gsub(/_+/," "))
   erb :"movies/search_results"
 end
 
