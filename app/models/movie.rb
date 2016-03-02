@@ -1,10 +1,10 @@
 class Movie < ActiveRecord::Base
- # Takes a search parameter and returns a list of
- # movies that match that parameter.
+ # Takes a search parameter based on title and returns a list of
+ # Movie objects that match that parameter.
  #
- # Search text - this parameter is the text pulled from the search bar.
+ # Search text - this parameter is the String pulled from the search bar.
  #
- # Returns list of movie objects
+ # Returns list of Movie objects
    def Movie.movie_search_title(search_text)
    	movie_match = Movie.where({"title" => search_text.capitalize})
    	if movie_match.empty?
@@ -14,12 +14,12 @@ class Movie < ActiveRecord::Base
    	end
    end
 
- # Takes a search parameter and returns a list of
- # movies that match that parameter.
+ # Takes a search parameter based on director and returns a list of
+ # Movie objects that match that parameter.
  #
- # Search text - this parameter is the text pulled from the search bar.
+ # Search text - this parameter is the String pulled from the search bar.
  #
- # Returns list of movie objects.
+ # Returns list of Movie objects.
  	def Movie.movie_search_director(search_text)
 	 	movie_match = Movie.where({"director" => search_text.capitalize})
 	 	if movie_match.empty?

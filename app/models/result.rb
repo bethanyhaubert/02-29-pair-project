@@ -1,10 +1,16 @@
 class Result < ActiveRecord::Base
+ # Sets the Result object's q1, q2, q3 columns to nil
+ #
+ # Returns nil
   def set_qs_to_nil
     self.q1 = nil
     self.q2 = nil
     self.q3 = nil
   end
 
+ # Finds all of the Result objects that pass the bechdel test
+ #
+ # Returns list of Result objects
 	def Result.passing
 		results = Result.where({"q1" => true, "q2" => true, "q3" => true})
 		if results.empty?
@@ -14,15 +20,24 @@ class Result < ActiveRecord::Base
 		end
 	end
 
+ # Gets a Movie object
+ #
+ # Returns a Movie object
 	def get_id
 		return Movie.find_by_id(self.movie_id)
 	end
 
+ # Gets the image of a Movie object
+ #
+ # Returns a Movie object's image
 	def get_image
 		movie = self.get_id
 		return movie.image
 	end
 
+ # Gets the title of a Movie object
+ #
+ # Returns a Movie object's title
   def get_title
     movie = self.get_id
     return movie.title
