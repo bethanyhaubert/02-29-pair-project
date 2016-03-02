@@ -9,8 +9,9 @@ MyApp.post "/results/:id/add" do
   @result.q1 = params[:q1]
   @result.q2 = params[:q2]
   @result.q3 = params[:q3]
-  @result.movie_id = @current_movie.id
   @result.user_id = @current_user.id
+  @result.movie_id = @movie.id
+
   if @result.is_valid == true
     @result.save
     redirect "/movies/#{@movie.id}/view"
@@ -27,6 +28,7 @@ MyApp.post "/results/:id/edit" do
   @result.q1 = params[:q1]
   @result.q2 = params[:q2]
   @result.q3 = params[:q3]
+  @result.movie_id = @movie.id
   @result.user_id = @current_user.id
   if @result.is_valid == true
     @result.save

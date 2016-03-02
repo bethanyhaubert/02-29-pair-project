@@ -23,6 +23,11 @@ class Result < ActiveRecord::Base
 		return movie.image
 	end
 
+  def get_title
+    movie = self.get_id
+    return movie.title
+  end
+
 		#Returns @errors
 	def get_errors
     	return @errors
