@@ -1,28 +1,36 @@
 <h1> Movie Results </h1>
 
-<% if @list_of_movies != nil %>
 
-	<% if @bechdel == 1 %>
-	<ul>
-	<% @list_of_movies.each do |movie| %>
-		<% if movie.bechdel_result == true %>
-			<li>
-				<a href="/movies/<%= movie.id %>/view"><%= movie.title %></a>
-			</li>
-		<% end %>
-		<% end %>
-	</ul>
+	<% if @list_of_movies != nil && @bechdel == "1" %>
 
-	<% elsif @bechdel == 2 %>
 		<ul>
 		<% @list_of_movies.each do |movie| %>
+
+			<% if movie.bechdel_result == true %>
+				<li>
+					<a href="/movies/<%= movie.id %>/view"><%= movie.title %></a>
+				</li>
+			<% end %>
+
+		</ul>
+
+	<% end %>
+		
+
+	<% elsif @list_of_movies != nil && @bechdel == "2" %>
+
+		<ul>
+		<% @list_of_movies.each do |movie| %>
+
 			<li>
 				<a href="/movies/<%= movie.id %>/view"><%= movie.title %></a>
 			</li>
+
 		<% end %>
-	<% end %>
 		</ul>
 
-<% else %>
+	<% else %>
+
 	<p>No movies match your search.</p>
+
 <%end%>

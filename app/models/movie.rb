@@ -30,6 +30,9 @@ class Movie < ActiveRecord::Base
     	end
 	end
 
+	#Checks to see if a Movie object passes the bechdel test
+	#
+	#Returns Boolean
 	def bechdel_result
 		movie_result = Result.where({"movie_id" => self.id}).first
 		if movie_result == nil
