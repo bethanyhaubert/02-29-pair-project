@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MovieTest < Minitest::Test
+class ResultTest < Minitest::Test
   def setup
     super
 

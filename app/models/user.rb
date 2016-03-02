@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
       	@errors << "Email cannot be blank"
     	end
 
-      	if User.exists?(email: [self.email]) == true
+      if User.exists?(email: [self.email]) == true
         @errors << "An account already exists for this email address."
-      	end
+      end
 
     	if self.password == ""
       	@errors << "Must choose a password"
