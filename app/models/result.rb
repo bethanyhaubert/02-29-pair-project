@@ -15,7 +15,7 @@ class Result < ActiveRecord::Base
 	end
 
 	def get_id
-		Movie.find_by_id(self.movie_id)
+		return Movie.find_by_id(self.movie_id)
 	end
 
 	def get_image
