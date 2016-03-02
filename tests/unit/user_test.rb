@@ -3,29 +3,31 @@ require 'test_helper'
 class UserTest < Minitest::Test
   def setup
     super
+    @user = User.new
+    @user.name = "Derek"
+    @user.email = "derek@gmail.com"
+    @user.password = "stuff"
+    @user.save
 
     @user1 = User.new
     @user1.name = "Barfi"
     @user1.email = "barfi@gmail.com"
     @user1.password = "password"
-    @user1.save
 
     @user2 = User.new
     @user2.name = ""
     @user2.email = ""
     @user2.password = ""
-    @user2.save
 
-    @user1.set_errors
+    @user3 = User.new
+    @user3.name = ""
+    @user3.email = "derek@gmail.com"
+    @user3.password = ""
+
+
    end
 
   def test_set_errors
-    @user3 = User.new
-    @user3.name = ""
-    @user3.email = "barfi@gmail.com"
-    @user3.password = ""
-    @user3.save
-
     assert_includes(@user2.set_errors, "Name cannot be blank")
     assert_includes(@user2.set_errors, "Email cannot be blank")
     assert_includes(@user2.set_errors, "Must choose a password")
@@ -43,7 +45,7 @@ class UserTest < Minitest::Test
   end
 
   def test_is_valid
-    binding.pry
+    @user1.set_errors
     assert_equal(true, @user1.is_valid)
   end 
 
