@@ -3,7 +3,6 @@ require 'test_helper'
 class MovieTest < Minitest::Test
   def setup
     super
-
     @movie1 = Movie.new
     @movie1.title = "Barfi"
     @movie1.director = "some dude"
@@ -35,29 +34,28 @@ class MovieTest < Minitest::Test
     @result2.q2 = true
     @result2.q3 = true
     @result2.save
+  end
 
-   end
+  def test_movie_search
+ 	  assert_includes(Movie.movie_search("Barfi"), @movie1)
+ 	  refute_includes(Movie.movie_search("Barfi"), @movie2)
+  end
 
-   def test_movie_search
-   	assert_includes(Movie.movie_search("Barfi"), @movie1)
-   	refute_includes(Movie.movie_search("Barfi"), @movie2)
-   end
+  def test_movie_search_nil
+ 	  assert_nil(Movie.movie_search("hi derek"))
+  end
 
-   def test_movie_search_nil
-   	assert_nil(Movie.movie_search("hi derek"))
-   end
+  def test_bechdel_result_true
+ 	  assert_equal(true, @movie1.bechdel_result)
+  end
 
-   def test_bechdel_result_true
-   	assert_equal(true, @movie1.bechdel_result)
-   end
+  def test_bechdel_result_false
+ 	  assert_equal(false, @movie2.bechdel_result)
+  end
 
-   def test_bechdel_result_false
-   	assert_equal(false, @movie2.bechdel_result)
-   end
-
-   def test_bechdel_result_nil
-   	assert_nil(@movie3.bechdel_result)
-   end
+  def test_bechdel_result_nil
+ 	  assert_nil(@movie3.bechdel_result)
+  end
 end
 
 

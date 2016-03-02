@@ -42,7 +42,7 @@ MyApp.post "/users/:id/edit" do
       erb :"error"
     end
   else
-  erb :"logins/denied_access"
+    erb :"logins/denied_access"
   end
 end
 

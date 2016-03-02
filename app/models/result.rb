@@ -9,7 +9,7 @@ class Result < ActiveRecord::Base
 		results = Result.where({"q1" => true, "q2" => true, "q3" => true})
 		if results.empty?
 			return nil
-		else 
+		else
 			return results
 		end
 	end
@@ -28,33 +28,30 @@ class Result < ActiveRecord::Base
     return movie.title
   end
 
-		#Returns @errors
+ # Returns @errors
 	def get_errors
-    	return @errors
+    return @errors
  	end
 
-  	#Adds errors to Hash
-  	#
-  	#Returns Hash
-  	def set_errors
-    	@errors = []
-
-    	if self.user_id == nil
-      	@errors << "Must be logged in to add or edit the Bechdel rating."
-    	end
-
+ # Adds errors to Hash
+ #
+ # Returns Hash
+	def set_errors
+  	@errors = []
+    if self.user_id == nil
+    	@errors << "Must be logged in to add or edit the Bechdel rating."
   	end
+  end
 
-  # Checks if the record is valid.
-  # 
-  # Returns Boolean.
-  	def is_valid
-    	self.set_errors
-    	if @errors.length > 0
-      	return false
-    	else
-      	return true
-    	end
+ # Checks if the record is valid.
+ # 
+ # Returns Boolean.
+	def is_valid
+  	self.set_errors
+  	if @errors.length > 0
+    	return false
+  	else
+    	return true
   	end
-
+	end
 end

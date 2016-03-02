@@ -8,14 +8,14 @@ MyApp.get "/" do
 end
 
 MyApp.post "/movies/search" do
-  @movie_search = params[:search].gsub(/\s+/,"_")
+  @movie_search = params[:search].gsub(/\s+/, "_")
   if params[:passes_bechdel] == nil
     @bechdel_pass = 2
   else
     @bechdel_pass = params[:passes_bechdel]
   end
 
-  if params[:search_category] !=nil
+  if params[:search_category] != nil
     @category = params[:search_category]
     redirect "/movies/#{@movie_search}/#{@category}/#{@bechdel_pass}/results"
   else
@@ -27,9 +27,9 @@ end
 MyApp.get "/movies/:search/:category/:bechdel/results" do
   @bechdel = params[:bechdel]
   if params[:category] == "title"
-    @list_of_movies = Movie.movie_search_title(params[:search].gsub(/_+/," "))
-  else
-    @list_of_movies = Movie.movie_search_director(params[:search].gsub(/_+/," "))
+    @list_of_movies = Movie.movie_search_title(params[:search].gsub(/_+/, " "))
+   else
+    @list_of_movies = Movie.movie_search_director(params[:search].gsub(/_+/, " "))
   end
   erb :"movies/search_results"
 end

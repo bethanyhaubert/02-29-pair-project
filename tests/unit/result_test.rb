@@ -3,7 +3,6 @@ require 'test_helper'
 class ResultTest < Minitest::Test
   def setup
     super
-
     @movie1 = Movie.new
     @movie1.title = "Barfi"
     @movie1.director = "some dude"
@@ -39,39 +38,37 @@ class ResultTest < Minitest::Test
     @result2.q3 = true
     @result2.user_id = 1
     @result2.save
+  end
 
-   end
-
-   def test_set_qs_to_nil
+  def test_set_qs_to_nil
     @result2.set_qs_to_nil
-   	assert_nil(@result2.q1)
+ 	  assert_nil(@result2.q1)
     assert_nil(@result2.q2)
     assert_nil(@result2.q3)
-   end
+  end
 
-   def test_results_passing
-   	assert_includes(Result.passing, @result1)
+  def test_results_passing
+    assert_includes(Result.passing, @result1)
     refute_includes(Result.passing, @result2)
-   end
+  end
 
-   def test_results_passing_nil
+  def test_results_passing_nil
     @result1.q1 = false
     @result1.q2 = true
     @result1.q3 = true
     @result1.save
-
     assert_nil(Result.passing)
-   end
+  end
 
-   def test_get_id
-   	assert_equal(@result1.get_id, @movie1)
+  def test_get_id
+ 	  assert_equal(@result1.get_id, @movie1)
     refute_equal(@result1.get_id, @movie2)
-   end
+  end
 
-   def test_get_image
-   	assert_includes(@result1.get_image, @movie1.image)
+  def test_get_image
+ 	  assert_includes(@result1.get_image, @movie1.image)
     refute_includes(@result1.get_image, @movie2.image)
-   end
+  end
 
   def test_set_errors
     assert_includes(@result1.set_errors, "Must be logged in to add or edit the Bechdel rating.")
@@ -87,7 +84,7 @@ class ResultTest < Minitest::Test
     assert_equal(false, @result1.is_valid)
   end
 
-   def test_is_valid
+  def test_is_valid
     @result2.set_errors
     assert_equal(true, @result2.is_valid)
   end 

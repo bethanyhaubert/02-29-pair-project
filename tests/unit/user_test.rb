@@ -23,9 +23,7 @@ class UserTest < Minitest::Test
     @user3.name = ""
     @user3.email = "derek@gmail.com"
     @user3.password = ""
-
-
-   end
+  end
 
   def test_set_errors
     assert_includes(@user2.set_errors, "Name cannot be blank")
@@ -48,7 +46,6 @@ class UserTest < Minitest::Test
     @user1.set_errors
     assert_equal(true, @user1.is_valid)
   end 
-
 end
 
 
