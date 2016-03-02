@@ -3,7 +3,7 @@ MyApp.before "/*" do
 end
 
 MyApp.get "/" do
-  @random_movie = "http://techno2013.ucoz.com/dhoom2-18-1.jpg"
+  @random_movie = Result.order("RANDOM()").first
   erb :"movies/home"
 end
 
