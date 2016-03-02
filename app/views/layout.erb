@@ -11,8 +11,20 @@
 	 <ul>
 	 		<li>Search:
 	 			<form action="/movies/search" method="post">
-	 				<input type="text" name="search" placeholder="search for a movie">
-	 				<input type="submit" value="Search">
+
+				 	  <select name="search_category">
+
+						  <option selected disabled>Choose category</option>
+							<option value= "title">Title</option>
+							<option value= "director">Director</option>
+					  </select>
+
+					  <input type="text" name="search" placeholder="search for a movie">
+
+ 						<input type="checkbox" name="passes_bechdel" value=true>
+                <label>Passes Bechdel Test</label>
+
+	 					<input type="submit" value="Search">
 	 			</form>
 	 		</li>
 

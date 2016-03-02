@@ -9,11 +9,21 @@ end
 
 MyApp.post "/movies/search" do
   @movie_search = params[:search].gsub(/\s+/,"_")
-  redirect "/movies/#{@movie_search}/results"
+  if params[:search_category] !=nil
+    @category = params[:search_category]
+    redirect "/movies/#{@movie_search}/#{@category}/results"
+  else
+    @error_object = "Please select a category"
+    redirect "/"
+  end
 end
 
-MyApp.get "/movies/:search/results" do
-   @list_of_movies = Movie.movie_search(params[:search].gsub(/_+/," "))
+MyApp.get "/movies/:search/:category/results" do
+  if params[:category] == "title"
+    @list_of_movies = Movie.movie_search_title(params[:search].gsub(/_+/," "))
+  else
+    @list_of_movies = Movie.movie_search_director(params[:search].gsub(/_+/," "))
+  end
   erb :"movies/search_results"
 end
 
