@@ -23,6 +23,7 @@ end
 MyApp.post "/results/:id/edit" do
   @movie = Movie.find_by_id(params[:id])
   @result =  Result.where({"movie_id" => @movie.id }).first
+  @result.set_qs_to_nil
   @result.q1 = params[:q1]
   @result.q2 = params[:q2]
   @result.q3 = params[:q3]

@@ -1,6 +1,8 @@
 class Result < ActiveRecord::Base
   def set_qs_to_nil
-    
+    self.q1 = nil
+    self.q2 = nil
+    self.q3 = nil
   end
 
 	def Result.passing
