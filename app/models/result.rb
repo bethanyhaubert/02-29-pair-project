@@ -1,3 +1,8 @@
+# DB.define_column("results", "movie_id", "integer")
+# DB.define_column("results", "user_id", "integer")
+# DB.define_column("results", "q1", "boolean")
+# DB.define_column("results", "q2", "boolean")
+# DB.define_column("results", "q3", "boolean")
 class Result < ActiveRecord::Base
  # Sets the Result object's q1, q2, q3 columns to nil
  #

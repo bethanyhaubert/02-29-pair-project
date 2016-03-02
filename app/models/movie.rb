@@ -1,3 +1,7 @@
+# DB.define_column("movies", "title", "string")
+# DB.define_column("movies", "director", "string")
+# DB.define_column("movies", "image", "string")
+# DB.define_column("movies", "critic_rating", "integer")
 class Movie < ActiveRecord::Base
  # Takes a search parameter based on title and returns a list of
  # Movie objects that match that parameter.
