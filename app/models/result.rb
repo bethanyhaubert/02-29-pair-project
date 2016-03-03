@@ -36,7 +36,7 @@ class Result < ActiveRecord::Base
  #
  # Returns a Movie object's image
 	def get_image
-		movie = Movie.find_by_id(self.movie_id)
+		movie = self.get_id
 		return movie.image
 	end
 
@@ -44,7 +44,7 @@ class Result < ActiveRecord::Base
  #
  # Returns a Movie object's title
   def get_title
-    movie = Movie.find_by_id(self.movie_id)
+    movie = self.get_id
     return movie.title
   end
 

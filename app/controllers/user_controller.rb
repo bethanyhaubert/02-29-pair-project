@@ -36,12 +36,14 @@ end
 MyApp.post "/users/:id/edit" do
   session["temporary_error_message"] = nil
   if @user == @current_user
-    @user.assign_attributes({name: params['name'], email: params['email'], password: params['password']})
+    @user.assign_attributes({name: params['name'], password: params['password']})
     if @user.is_valid == true
       @user.save
       redirect "/users/#{@user.id}/view"
-    else
-      @error_object = @user
+    elsif @user.is_valid == false
+      session["temporary_error_message"] = @user.get_errors
+      @error_object = session["temporary_error_message"]
+      binding.pry
       redirect "/users/#{@user.id}/view"
     end
   end
