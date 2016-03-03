@@ -20,9 +20,10 @@ MyApp.post "/users/create" do
   if @user.is_valid == true
     @user.save
     redirect "/users/#{@user.id}/view"
-  else
-    @error_object = @user
-    erb :"error"
+  elsif @user.is_valid == false
+    session["temporary_error_message"] = @user.get_errors
+    @error_object = session["temporary_error_message"]
+    redirect "/"
   end
 end
 
@@ -39,18 +40,14 @@ MyApp.post "/users/:id/edit" do
       redirect "/users/#{@user.id}/view"
     else
       @error_object = @user
-      erb :"error"
+      redirect "/users/#{@user.id}/view"
     end
-  else
-    erb :"logins/denied_access"
   end
 end
 
 MyApp.post "/users/:id/delete" do
   if @user == @current_user
     @user.delete
-    erb :"success"
-  else
-    erb :"logins/denied_access"
+    redirect "/"
   end
 end

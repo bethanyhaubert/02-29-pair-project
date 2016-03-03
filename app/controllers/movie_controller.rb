@@ -1,12 +1,15 @@
 MyApp.before "/*" do
   @current_user = User.find_by_id(session["user_id"])
+    if session["temporary_error_message"] != nil
+    @error = session["temporary_error_message"] 
+  end
 end
 
 MyApp.get "/" do
   @random_movie = Movie.top_movies_array.sample
   @movie_details = HTTParty.get("http://www.omdbapi.com/?t=#{@random_movie}&y=&plot=short&r=json")
   if Movie.find_by({"title" => @random_movie}) != nil
-    @new_movie = Movie.find_by({"title" => @random_movie}).first
+    @new_movie = Movie.find_by({"title" => @random_movie})
   else
   @new_movie = Movie.new
   @new_movie.title = @movie_details["Title"]
@@ -25,11 +28,20 @@ MyApp.post "/movies/search" do
     @bechdel_pass = params[:passes_bechdel]
   end
 
+  if Movie.find_by({"title" => params[:search]}) == nil
+    @error = "Invalid movie title"
+    redirect "/"
+  elsif
+    Movie.find_by({"director" => params[:search]}) == nil
+    @error = "Invalid director name"
+    redirect "/"
+  end
+
   if params[:search_category] != nil
     @category = params[:search_category]
     redirect "/movies/#{@movie_search}/#{@category}/#{@bechdel_pass}/results"
   else
-    @error_object = "Please select a category"
+    @error = "Please select a category"
     redirect "/"
   end
 end

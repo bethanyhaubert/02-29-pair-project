@@ -1,6 +1,11 @@
 <h2 style="color:red;">Error</h2>
 
+<% if @error != nil%>
+    <h2 style="color:red;"><%= @error %></h2>
+  <% end %>
+
  <% if @error_object != nil %>
 <% @error_object.get_errors.each do |error_message| %>
-  <p style="color:red;">*<%= error_message %></p>
+  <h2 style="color:red;">*<%= error_message %></h2>
+<% end %>
 <% end %>

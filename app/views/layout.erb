@@ -58,6 +58,16 @@
 	 </ul>
 	</nav>
 
+	 <% if @error != nil %>
+	  <p style="color:red;">*<%= @error %> </p>
+	  <% end %>
+
+	 <% if @error_object != nil %>
+	   <% @error_object.each do |error_message| %>
+	   <p style="color:red;">*<%= error_message %></p>
+	   <% end %>
+	 <% end %>
+
   <!-- The `yield` below is where the contents of a view file are put. -->
   <!-- Then the combined layout + view is sent back to the client. -->
   <%= yield %>
