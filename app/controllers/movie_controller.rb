@@ -5,11 +5,15 @@ end
 MyApp.get "/" do
   @random_movie = Movie.top_movies_array.sample
   @movie_details = HTTParty.get("http://www.omdbapi.com/?t=#{@random_movie}&y=&plot=short&r=json")
+  if Movie.find_by({"title" => @random_movie}) != nil
+    @new_movie = Movie.find_by({"title" => @random_movie}).first
+  else
   @new_movie = Movie.new
-  @new_movie.title = HTTParty["Title"]
-  @new_movie.director = HTTParty["Director"]
-  @new_movie.image = HTTParty["Poster"]
+  @new_movie.title = @movie_details["Title"]
+  @new_movie.director = @movie_details["Director"]
+  @new_movie.image = @movie_details["Poster"]
   @new_movie.save
+  end
   erb :"movies/home"
 end
 

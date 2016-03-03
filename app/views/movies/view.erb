@@ -1,6 +1,5 @@
-<h1> Movie profile </h1>
-
-<h2> <%= @movie.title %> </h2>
+<h1><u><%= @movie.title %> </h1></u>
+<h3><i>directed by <%= @movie.director %> </i></h3>
 <img src="<%= @movie.image %>">
 
 <% if @movie.bechdel_result == nil %>	
