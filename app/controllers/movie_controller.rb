@@ -3,8 +3,13 @@ MyApp.before "/*" do
 end
 
 MyApp.get "/" do
-    binding.pry
-  @random_movie = Result.order("RANDOM()").first
+  @random_movie = Movie.top_movies_array.sample
+  @movie_details = HTTParty.get("http://www.omdbapi.com/?t=#{@random_movie}&y=&plot=short&r=json")
+  @new_movie = Movie.new
+  @new_movie.title = HTTParty["Title"]
+  @new_movie.director = HTTParty["Director"]
+  @new_movie.image = HTTParty["Poster"]
+  @new_movie.save
   erb :"movies/home"
 end
 
