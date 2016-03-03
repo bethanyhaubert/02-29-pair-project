@@ -104,7 +104,6 @@ class Movie < ActiveRecord::Base
 			"Tashan",
 			"Satyam Shivam Sundaram",
 			"Aiyyaa",
-			"Mr & Mrs ’55",
 			"Garam Hawa",
 			"Hum Hain Rahi Pya Ke",
 			"Lootera",

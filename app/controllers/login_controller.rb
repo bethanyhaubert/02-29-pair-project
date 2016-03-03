@@ -1,4 +1,6 @@
 MyApp.post "/login" do
+  session["temporary_error_message"] = nil
+  
   if params["email"] == ""
     session["temporary_error_message"] = "Incorrect login information"
 

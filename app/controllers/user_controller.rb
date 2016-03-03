@@ -12,6 +12,7 @@ MyApp.get "/users/new" do
 end
 
 MyApp.post "/users/create" do
+  session["temporary_error_message"] = nil
   @user = User.new
   @user.name = params[:name]
   @user.email = params[:email]
@@ -33,6 +34,7 @@ MyApp.get "/users/:id/view" do
 end
 
 MyApp.post "/users/:id/edit" do
+  session["temporary_error_message"] = nil
   if @user == @current_user
     @user.assign_attributes({name: params['name'], email: params['email'], password: params['password']})
     if @user.is_valid == true

@@ -21,27 +21,32 @@ MyApp.get "/" do
 end
 
 MyApp.post "/movies/search" do
+  session["temporary_error_message"] = nil
   @movie_search = params[:search].gsub(/\s+/, "_")
+
+
   if params[:passes_bechdel] == nil
     @bechdel_pass = 2
   else
     @bechdel_pass = params[:passes_bechdel]
   end
 
-  if Movie.find_by({"title" => params[:search]}) == nil
-    @error = "Invalid movie title"
-    redirect "/"
-  elsif
-    Movie.find_by({"director" => params[:search]}) == nil
-    @error = "Invalid director name"
-    redirect "/"
-  end
-
   if params[:search_category] != nil
     @category = params[:search_category]
-    redirect "/movies/#{@movie_search}/#{@category}/#{@bechdel_pass}/results"
+
+    if params[:search_category] == "title" && Movie.find_by({"title" => params[:search]}) == nil
+        session["temporary_error_message"] = "Invalid movie title"
+        binding.pry
+        redirect "/"
+    elsif params[:search_category] == "director" && Movie.find_by({"director" => params[:search]}) == nil
+        session["temporary_error_message"] = "Invalid director name"
+        redirect "/"
+    else
+      redirect "/movies/#{@movie_search}/#{@category}/#{@bechdel_pass}/results"
+    end
+
   else
-    @error = "Please select a category"
+    session["temporary_error_message"] = "Please select a category"
     redirect "/"
   end
 end
@@ -56,19 +61,19 @@ MyApp.get "/movies/:search/:category/:bechdel/results" do
   erb :"movies/search_results"
 end
 
-MyApp.get "/movies/new" do
-  erb :'movies/new'
-end
+# MyApp.get "/movies/new" do
+#   erb :'movies/new'
+# end
 
-MyApp.post "/movies/create" do
-  @movie = Movie.new
-  @movie.title = params[:title].capitalize
-  @movie.director = params[:director].capitalize
-  @movie.image = params[:image]
-  @movie.critic_rating = params[:rating]
-  @movie.save
-  redirect "/movies/#{@movie.id}/view"
-end
+# MyApp.post "/movies/create" do
+#   @movie = Movie.new
+#   @movie.title = params[:title].capitalize
+#   @movie.director = params[:director].capitalize
+#   @movie.image = params[:image]
+#   @movie.critic_rating = params[:rating]
+#   @movie.save
+#   redirect "/movies/#{@movie.id}/view"
+# end
 
 MyApp.get "/movies/:id/view" do
   @movie = Movie.find_by_id(params[:id])

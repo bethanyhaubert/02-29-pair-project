@@ -4,6 +4,7 @@ MyApp.get "/results/list" do
 end
 
 MyApp.post "/results/:id/add" do
+  session["temporary_error_message"] = nil
   @movie = Movie.find_by_id(params[:id])
   @result = Result.new
   @result.q1 = params[:q1]
