@@ -3,6 +3,7 @@ MyApp.before "/*" do
 end
 
 MyApp.get "/" do
+    binding.pry
   @random_movie = Result.order("RANDOM()").first
   erb :"movies/home"
 end
