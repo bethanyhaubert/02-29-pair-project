@@ -36,7 +36,6 @@ MyApp.post "/movies/search" do
 
     if params[:search_category] == "title" && Movie.find_by({"title" => params[:search]}) == nil
         session["temporary_error_message"] = "Invalid movie title"
-        binding.pry
         redirect "/"
     elsif params[:search_category] == "director" && Movie.find_by({"director" => params[:search]}) == nil
         session["temporary_error_message"] = "Invalid director name"
