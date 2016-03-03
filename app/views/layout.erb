@@ -65,9 +65,9 @@
 	  <% end %>
 
 	 <% if @error_object != nil %>
-	   <% @error_object.each do |error_message| %>
+	   <% @error_object.each { |error_message| puts error_message } %>
 	   <p style="color:red;">*<%= error_message %></p>
-	   <% end %>
+	   
 	 <% end %>
 
   <!-- The `yield` below is where the contents of a view file are put. -->

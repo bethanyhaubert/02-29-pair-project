@@ -12,8 +12,8 @@ MyApp.get "/" do
     @new_movie = Movie.find_by({"title" => @random_movie})
   else
   @new_movie = Movie.new
-  @new_movie.title = @movie_details["Title"]
-  @new_movie.director = @movie_details["Director"]
+  @new_movie.title = @movie_details["Title"].capitalize
+  @new_movie.director = @movie_details["Director"].capitalize
   @new_movie.image = @movie_details["Poster"]
   @new_movie.save
   end
