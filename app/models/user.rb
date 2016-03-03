@@ -2,17 +2,27 @@
 # DB.define_column("users", "email", "string")
 # DB.define_column("users", "password", "string")
 class User < ActiveRecord::Base
+
+  def empty_errors
+    @errors = []
+  end
+  
+  # Returns @errors
+  def user_exists
+    if User.exists?(email: [self.email]) == true
+      @errors << "An account already exists for this email address."
+    end
+  end
+
  # Returns @errors
 	def get_errors
     return @errors
  	end
 
- # Adds errors to Hash
+ # Adds errors to Array
  #
- # Returns Hash
+ # Returns Array
 	def set_errors
-  	@errors = []
-
   	if self.name == ""
     	@errors << "Name cannot be blank"
   	end
@@ -20,10 +30,6 @@ class User < ActiveRecord::Base
   	if self.email == ""
     	@errors << "Email cannot be blank"
   	end
-
-    if User.exists?(email: [self.email]) == true
-      @errors << "An account already exists for this email address."
-    end
 
   	if self.password == ""
     	@errors << "Must choose a password"

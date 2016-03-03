@@ -65,6 +65,11 @@ class MovieTest < Minitest::Test
   def test_bechdel_result_nil
  	  assert_nil(@movie3.bechdel_result)
   end
+
+  def test_top_movies_array
+    assert_includes(Movie.top_movies_array, "Mother India")
+    refute_includes(Movie.top_movies_array, "Jurassic Park")
+  end
 end
 
 

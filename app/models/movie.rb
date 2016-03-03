@@ -145,7 +145,6 @@ class Movie < ActiveRecord::Base
 			"Umrao Jaan",
 			"Veer-Zaara",
 			"Yeh Jawaani Hai Deewani",
-			"Hum Aapke Hain Koun…!",
 			"Bobby")
 	end
 end

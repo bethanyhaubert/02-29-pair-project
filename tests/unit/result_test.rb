@@ -65,6 +65,11 @@ class ResultTest < Minitest::Test
     refute_equal(@result1.get_id, @movie2)
   end
 
+  def test_get_title
+    assert_equal(@result1.get_title, "Barfi")
+    refute_equal(@result1.get_title, "Bajirao Mastani")
+  end
+
   def test_get_image
  	  assert_includes(@result1.get_image, @movie1.image)
     refute_includes(@result1.get_image, @movie2.image)

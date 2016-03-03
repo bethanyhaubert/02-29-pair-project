@@ -14,7 +14,7 @@ MyApp.post "/results/:id/add" do
   if @current_user != nil
     @result.user_id = @current_user.id
   else 
-    session["temporary_error_message"] = "Please login first"
+    session["temporary_error_message"] = ["Please login first"]
     redirect "/movies/#{@movie.id}/view"
   end
 
