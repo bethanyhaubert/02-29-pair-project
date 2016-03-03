@@ -547,8 +547,8 @@ body {
 }
 
 a {
-/*  text-decoration: none;
-*/  color: #999;
+/*  text-decoration: none;*/
+  color: darkmagenta;
   font-family: 'Raleway', sans-serif;
   font-size: 1em;
   font-weight: 100;
@@ -559,7 +559,7 @@ a {
 }
 
 li a {
-  color: #99cc00;
+  color: darkmagenta;
   font-weight: bold;
 }
 /***********************
@@ -582,7 +582,7 @@ nav ul{
 
 nav li {
   display: inline;
-  width: 15%; 
+  width: 10%; 
 }
 
 nav li a {
@@ -591,18 +591,18 @@ nav li a {
   padding: 15px 50px;
   line-height: 1.5;
 }
-/*
-nav:hover{
-  background-color: #99cc00;
-}*/
 
-nav li a:visited {
-  color: #999;
+h1, h2{
+ color: #999;
 }
 
-nav li a:hover{
+/*nav li a:visited {
+  color: #999;
+}*/
+
+/*nav li a:hover{
   color: white;
-  background-color: #99cc00;
+  background-color: #99cc00;*/
 }
 
 

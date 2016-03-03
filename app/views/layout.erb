@@ -11,9 +11,9 @@
 
   <nav>
 	 <ul>
-	 		<li>Search:
+	 		<li>
 	 			<form action="/movies/search" method="post">
-
+	 				Search:
 				 	  <select name="search_category">
 
 						  <option selected disabled>Choose category</option>
@@ -30,12 +30,16 @@
 	 			</form>
 	 		</li>
 
+	 		<li><a href="/results/list">Bechdel Gallery</a></li>
+
+			<li><a href="/">Home</a></li>
+
 	 	<% if @current_user == nil %>
 		 	<li><a href="/users/new"> Create account</a></li>
 
-		 	<li>Login:
+		 	<li>
 			 	<form action="/login" method="post">
-				
+					Login:
 				    <input type="text" name="email" placeholder="email@address.com">
 
 				    <input type="password" name="password" placeholder="password">
@@ -52,8 +56,6 @@
 
 			<li><a href="/logout"> Logout </a></li>
 	<% end %>
-
-		<li><a href="/results/list">Bechdel Gallery</a></li>
 
 	 </ul>
 	</nav>
