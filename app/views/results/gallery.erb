@@ -4,7 +4,7 @@
 	<ul>
 	<% @bechdel_pass.each do |movie| %>
 		<li>
-		<a href="/movies/<%= movie.id %>/view">
+		<a href="/movies/<%= movie.movie_id %>/view">
 		<img src="<%= movie.get_image %>"></a>
 		</li>
 	<%end%>
