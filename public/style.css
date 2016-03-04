@@ -553,10 +553,14 @@ a {
   font-size: 1em;
   font-weight: 100;
 }
-
+/*
 .clear {
   clear: both;
 }
+
+.clearfix {
+    overflow: auto;
+  }*/
 
 li a {
   color: darkmagenta;
@@ -569,7 +573,7 @@ NAVIGATION
 nav {
   text-align: center;
   padding: 10px 0;
-  margin: 0;
+  margin-bottom: 50px;
   background: #f5f5f5;
 }
 
@@ -577,33 +581,48 @@ nav ul{
   list-style: none;
   margin: 0;
   padding: 0;
+  display: inline;
   
 }
 
 nav li {
   display: inline;
+  padding: 10px;
   width: 10%; 
 }
 
 nav li a {
   font-size: 1.em;
   font-weight:400;
-  padding: 15px 50px;
-  line-height: 1.5;
+  padding: 5px 68px;
+  line-height: 3;
 }
 
 h1, h2{
  color: #999;
 }
 
-/*nav li a:visited {
-  color: #999;
-}*/
-
-/*nav li a:hover{
-  color: white;
-  background-color: #99cc00;*/
+div {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 50px;
+  background: #f5f5f5;
+}
+
+
+footer li {
+  display: inline;
+  padding: 10px;
+  width: 10%; 
+}
+
+
 
 
 
