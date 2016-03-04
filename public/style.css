@@ -612,6 +612,8 @@ footer {
   text-align: center;
   padding: 10px 0;
   margin-top: 50px;
+  margin-left: 0;
+  margin-right: 20;
   background: #f5f5f5;
 }
 
