@@ -53,9 +53,9 @@ class Result < ActiveRecord::Base
     return @errors
  	end
 
- # Adds errors to Hash
+ # Adds errors to Array
  #
- # Returns Hash
+ # Returns Array
 	def set_errors
   	@errors = []
     if self.user_id == nil
