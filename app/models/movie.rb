@@ -47,6 +47,9 @@ class Movie < ActiveRecord::Base
 		end
 	end
 
+ # This is an Array of top bollywood movies
+ #
+ # Returns an Array of movies
 	def self.top_movies_array
 		movies = Array.[](
 			"Mughal-e-Azam", 

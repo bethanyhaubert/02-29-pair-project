@@ -3,6 +3,9 @@
 # DB.define_column("users", "password", "string")
 class User < ActiveRecord::Base
 
+ # This sets the @errors Array to empty
+ #
+ # Returns an empty array
   def empty_errors
     @errors = []
   end
