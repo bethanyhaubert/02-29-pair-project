@@ -67,7 +67,7 @@ class MovieTest < Minitest::Test
   end
 
   def test_top_movies_array
-    assert_includes(Movie.top_movies_array, "Mother India")
+    assert_includes(Movie.top_movies_array, "Bandit Queen")
     refute_includes(Movie.top_movies_array, "Jurassic Park")
   end
 end
