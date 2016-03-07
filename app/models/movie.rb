@@ -33,6 +33,9 @@ class Movie < ActiveRecord::Base
 	 	end
 	end
 
+	#Gets collection of Result objects for a movie.
+	#
+	#Returns collection of Result objects.
 	def result
 		Result.find_by_movie_id(self.id)
 	end

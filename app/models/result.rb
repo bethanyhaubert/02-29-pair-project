@@ -29,11 +29,7 @@ class Result < ActiveRecord::Base
  #
  # Returns Boolean
   def is_bechdel
-    #movie_result = Result.where({"movie_id" => self.id}).first
-    #if movie_result == nil
-    #  return nil
-    #elsif 
-    if  self.q1 == true && self.q2 == true && self.q3 == true
+    if self.q1 == true && self.q2 == true && self.q3 == true
       return true
     else
       return false
