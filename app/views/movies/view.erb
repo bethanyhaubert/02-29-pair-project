@@ -2,19 +2,19 @@
 <h3><i>directed by <%= @movie.director %> </i></h3>
 <img src="<%= @movie.image %>">
 
-<% if @movie.bechdel_result == nil %>	
+<% if !@movie.result %>	
 	<p> This movie has not yet been rated using the Bechdel test. </p>
 
-<% elsif @movie.bechdel_result == true %>
+<% elsif @movie.result.is_bechdel == true %>
 	<h3 style="color:green;"> This movie passes the Bechdel test! </h3>
 
-<% else %>
+<% else @movie.result.is_bechdel == false %>
 	<h3 style="color:red;"> This movie does not pass the Bechdel test. >:-( </h3>
 
 <% end %>
 
 
-<% if @movie.bechdel_result == nil %>
+<% if !@movie.result %>
 	<h3>Add Bechdel rating:</h3>
 		<p>Please select the criteria that this movie fulfills:</p>
 

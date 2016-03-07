@@ -33,19 +33,11 @@ class Movie < ActiveRecord::Base
 	 	end
 	end
 
- # Checks to see if a Movie object passes the bechdel test
- #
- # Returns Boolean
-	def bechdel_result
-		movie_result = Result.where({"movie_id" => self.id}).first
-		if movie_result == nil
-			return nil
-		elsif movie_result.q1 == true && movie_result.q2 == true && movie_result.q3 == true
-			return true
-		else
-			return false
-		end
+	def result
+		x = self.id
+		y = Result.find_by_movie_id(x)
 	end
+
 
  # This is an Array of top bollywood movies
  #

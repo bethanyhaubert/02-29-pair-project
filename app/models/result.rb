@@ -25,6 +25,20 @@ class Result < ActiveRecord::Base
 		end
 	end
 
+ # Checks to see if a Movie object passes the bechdel test
+ #
+ # Returns Boolean
+  def is_bechdel
+    movie_result = Result.where({"movie_id" => self.id}).first
+    if movie_result == nil
+      return nil
+    elsif movie_result.q1 == true && movie_result.q2 == true && movie_result.q3 == true
+      return true
+    else
+      return false
+    end
+  end
+
  # Gets a Movie object
  #
  # Returns a Movie object
