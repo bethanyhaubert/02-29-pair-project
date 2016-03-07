@@ -34,8 +34,7 @@ class Movie < ActiveRecord::Base
 	end
 
 	def result
-		x = self.id
-		y = Result.find_by_movie_id(x)
+		Result.find_by_movie_id(self.id)
 	end
 
 
