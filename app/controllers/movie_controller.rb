@@ -22,8 +22,10 @@ end
 
 MyApp.post "/movies/search" do
   session["temporary_error_message"] = nil
-  @movie_search = params[:search].gsub(/\s+/, "_")
 
+  formatted_search = Search.format(params[:search])
+
+  @movie_search = formatted_search.gsub(/\s+/, "_") 
 
   if params[:passes_bechdel] == nil
     @bechdel_pass = 2
@@ -34,10 +36,10 @@ MyApp.post "/movies/search" do
   if params[:search_category] != nil
     @category = params[:search_category]
 
-    if params[:search_category] == "title" && Movie.find_by({"title" => params[:search]}) == nil
+    if params[:search_category] == "title" && Movie.find_by({"title" => formatted_search}) == nil
         session["temporary_error_message"] = ["Invalid movie title"]
         redirect "/"
-    elsif params[:search_category] == "director" && Movie.find_by({"director" => params[:search]}) == nil
+    elsif params[:search_category] == "director" && Movie.find_by({"director" => formatted_search}) == nil
         session["temporary_error_message"] = ["Invalid director name"]
         redirect "/"
     else
