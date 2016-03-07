@@ -54,17 +54,11 @@ class MovieTest < Minitest::Test
     assert_nil(Movie.movie_search_director("hi derek"))
   end
 
-  def test_bechdel_result_true
- 	  assert_equal(true, @movie1.bechdel_result)
+  def test_result
+    assert_equal(@result1, @movie1.result)
+    refute_equal(@result1, @movie2.result)
   end
-
-  def test_bechdel_result_false
- 	  assert_equal(false, @movie2.bechdel_result)
-  end
-
-  def test_bechdel_result_nil
- 	  assert_nil(@movie3.bechdel_result)
-  end
+   
 
   def test_top_movies_array
     assert_includes(Movie.top_movies_array, "Bandit Queen")

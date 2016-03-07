@@ -93,6 +93,15 @@ class ResultTest < Minitest::Test
     @result2.set_errors
     assert_equal(true, @result2.is_valid)
   end 
+
+  def test_is_bechdel_true
+    assert_equal(true, @result1.is_bechdel)
+  end
+
+  def test_is_bechdel_false
+    assert_equal(false, @result2.is_bechdel)
+  end
+
 end
 
 
