@@ -38,12 +38,12 @@ class Movie < ActiveRecord::Base
  # Returns Boolean
 	def bechdel_result
 		movie_result = Result.where({"movie_id" => self.id}).first
-		if movie_result == nil
-			return nil
-		elsif movie_result.q1 == true && movie_result.q2 == true && movie_result.q3 == true
-			return true
-		else
-			return false
+		if movie_result 
+			if movie_result.q1 == true && movie_result.q2 == true && movie_result.q3 == true
+				return true
+			else
+				return false
+			end
 		end
 	end
 
