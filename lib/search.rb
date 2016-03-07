@@ -1,3 +1,5 @@
+# Utility method for proper casing of a search query/
+
 module Search
 
   def Search.format(search_string) #this feels way too weird
