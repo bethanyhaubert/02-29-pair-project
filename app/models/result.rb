@@ -69,7 +69,7 @@ class Result < ActiveRecord::Base
  # Returns Array
 	def set_errors
   	@errors = []
-    if self.user_id == nil
+    if !self.user_id 
     	@errors << "Must be logged in to add or edit the Bechdel rating."
   	end
   end
