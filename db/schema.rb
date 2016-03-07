@@ -15,6 +15,18 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "gifts", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "link"
+    t.string   "recipient"
+    t.float    "cost"
+    t.boolean  "funded"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -22,6 +34,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "director"
     t.string   "image"
     t.integer  "critic_rating"
+  end
+
+  create_table "pledges", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "gift_id"
+    t.float    "amount"
   end
 
   create_table "results", force: :cascade do |t|
