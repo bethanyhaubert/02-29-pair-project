@@ -24,7 +24,7 @@ class Result < ActiveRecord::Base
 			return results
 		end
 	end
-
+  
  # Checks to see if a Movie object passes the bechdel test
  #
  # Returns Boolean
