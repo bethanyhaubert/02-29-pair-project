@@ -22,7 +22,8 @@ class Authentication
  #
  # Returns Boolean
 	def user_exists?
-    	User.find_by_email(@email) != nil
+    	# User.find_by_email(@email) != nil
+    	user_object != nil
   	end
 
  #Returns current User object
@@ -37,13 +38,13 @@ class Authentication
 	def set_errors
 		@errors = []
 		if self.params_empty? == true
-			@errors << ["Please fill out the login form completely before submitting"]
+			@errors << "Please fill out the login form completely before submitting"
 	
 		elsif self.user_exists? != true
-			@errors << ["User with this email does not exist"]
+			@errors << "User with this email does not exist"
 
 		elsif user_object.password != @password
-			@errors << ["Incorrect password"]
+			@errors << "Incorrect password"
     	end
 	end
 
