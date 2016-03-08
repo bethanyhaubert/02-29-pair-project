@@ -1,3 +1,4 @@
+#gets errors and checks to see if form input is valid
 module Errors
   
   # Returns @errors
