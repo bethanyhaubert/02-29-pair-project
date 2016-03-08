@@ -18,10 +18,6 @@ class AuthenticationTest < Minitest::Test
     @login4 =  Authentication.new("derek@gmail.com", "cat")
   end
 
-  # def test_initialize
-  #   assert_equal(@email, "derek@gmail.com")
-  #   assert_equal(@password, "stuff")
-  # end
 
   def test_params_empty_false
     assert_equal(false, @login1.params_empty?)
@@ -38,10 +34,6 @@ class AuthenticationTest < Minitest::Test
   def test_user_exists_false
     assert_equal(false, @login3.user_exists?)
   end
-
-  # def test_user_object
-  #   assert_includes(user_object, )
-  # end
 
   def test_set_errors
     assert_includes(@login2.set_errors, "Please fill out the login form completely before submitting")
