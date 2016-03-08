@@ -2,6 +2,7 @@
 # DB.define_column("users", "email", "string")
 # DB.define_column("users", "password", "string")
 class User < ActiveRecord::Base
+  include Errors
 
  # This sets the @errors Array to empty
  #
@@ -17,11 +18,6 @@ class User < ActiveRecord::Base
     end
   end
 
- # Returns @errors
-	def get_errors
-    return @errors
- 	end
-
  # Adds errors to Array
  #
  # Returns Array
@@ -36,18 +32,6 @@ class User < ActiveRecord::Base
 
   	if self.password == ""
     	@errors << "Must choose a password"
-  	end
-	end
-
- # Checks if the record is valid.
- # 
- # Returns Boolean.
-	def is_valid
-  	self.set_errors
-  	if @errors.length > 0
-    	return false
-  	else
-    	return true
   	end
 	end
 end

@@ -60,20 +60,10 @@ class ResultTest < Minitest::Test
     assert_nil(Result.passing)
   end
 
-  def test_get_id
- 	  assert_equal(@result1.get_id, @movie1)
-    refute_equal(@result1.get_id, @movie2)
+  def test_movie_info
+ 	  assert_equal(@movie1, @result1.movie_info)
   end
 
-  def test_get_title
-    assert_equal(@result1.get_title, "Barfi")
-    refute_equal(@result1.get_title, "Bajirao Mastani")
-  end
-
-  def test_get_image
- 	  assert_includes(@result1.get_image, @movie1.image)
-    refute_includes(@result1.get_image, @movie2.image)
-  end
 
   def test_set_errors
     assert_includes(@result1.set_errors, "Must be logged in to add or edit the Bechdel rating.")
