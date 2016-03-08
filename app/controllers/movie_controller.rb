@@ -6,7 +6,8 @@ MyApp.before "/*" do
 end
 
 MyApp.get "/" do
-  @random_movie = Movie.top_movies_array.sample
+  #@random_movie = Movie.top_movies_array.sample
+  get_random_movie
   @movie_details = HTTParty.get("http://www.omdbapi.com/?t=#{@random_movie}&y=&plot=short&r=json")
   if Movie.find_by({"title" => @random_movie}) != nil
     @new_movie = Movie.find_by({"title" => @random_movie})

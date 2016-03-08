@@ -40,6 +40,10 @@ class Movie < ActiveRecord::Base
 		Result.find_by_movie_id(self.id)
 	end
 
+	def get_random_movie 
+		Movie.top_movies_array.sample
+	end
+
 
  # This is an Array of top bollywood movies
  #
