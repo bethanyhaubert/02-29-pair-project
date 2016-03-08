@@ -42,7 +42,6 @@ class Result < ActiveRecord::Base
  # Returns a collection of Movie objects
 	def movie_info
 		Movie.find_by_id(self.movie_id)
-    binding.pry
 	end
 
 

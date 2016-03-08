@@ -61,7 +61,7 @@ class ResultTest < Minitest::Test
   end
 
   def test_movie_info
- 	  assert_equal(@movie1.movie_info, @movie1)
+ 	  assert_equal(@movie1, @result1.movie_info)
   end
 
 
