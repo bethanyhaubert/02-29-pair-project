@@ -37,28 +37,14 @@ class Result < ActiveRecord::Base
     end
   end
 
- # Gets a Movie object
+ # Gets a collection of Movie objects
  #
- # Returns a Movie object
-	def get_id
-		return Movie.find_by_id(self.movie_id)
+ # Returns a collection of Movie objects
+	def movie_info
+		Movie.find_by_id(self.movie_id)
+    binding.pry
 	end
 
- # Gets the image of a Movie object
- #
- # Returns a Movie object's image
-	def get_image
-		movie = self.get_id
-		return movie.image
-	end
-
- # Gets the title of a Movie object
- #
- # Returns a Movie object's title
-  def get_title
-    movie = self.get_id
-    return movie.title
-  end
 
  # Adds errors to Array
  #

@@ -1,5 +1,4 @@
 MyApp.get "/results/list" do
-  binding.pry
   @bechdel_pass = Result.passing
   erb :"results/gallery"
 end
