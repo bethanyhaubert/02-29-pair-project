@@ -4,6 +4,7 @@
 # DB.define_column("results", "q2", "boolean")
 # DB.define_column("results", "q3", "boolean")
 class Result < ActiveRecord::Base
+  include Errors
  # Sets the Result object's q1, q2, q3 columns to nil
  #
  # Returns nil
@@ -59,11 +60,6 @@ class Result < ActiveRecord::Base
     return movie.title
   end
 
- # Returns @errors
-	def get_errors
-    return @errors
- 	end
-
  # Adds errors to Array
  #
  # Returns Array
@@ -73,16 +69,4 @@ class Result < ActiveRecord::Base
     	@errors << "Must be logged in to add or edit the Bechdel rating."
   	end
   end
-
- # Checks if the record is valid.
- # 
- # Returns Boolean.
-	def is_valid
-  	self.set_errors
-  	if @errors.length > 0
-    	return false
-  	else
-    	return true
-  	end
-	end
 end
