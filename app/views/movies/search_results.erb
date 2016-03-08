@@ -6,7 +6,7 @@
 		<ul>
 		<% @list_of_movies.each do |movie| %>
 
-			<% if movie.bechdel_result == true %>
+			<% if movie.result.is_bechdel == true %>
 				<li>
 					<a href="/movies/<%= movie.id %>/view"><%= movie.title %></a>
 				</li>
