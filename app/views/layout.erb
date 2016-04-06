@@ -26,58 +26,85 @@
   </head>
 
 <body>
+<div class="p-y-lg p-x block block-inverse" style="background: url(https://mrandmrs55.files.wordpress.com/2014/01/shree-420.jpg) top center; background-size: cover">
+<div class="container">
+	<div class="p-y-lg p-x block block-inverse" style="background: black top center; background-size: cover">
+	  <nav class="navbar navbar-transparent m-b-0">
+	   <div class="container-fluid">
 
-  <nav>
-	 <ul>
-	   <center><h1>Bollywood Bechdel </h1></center>
-	 		<li>
-	 			<form action="/movies/search" method="post">
-	 				Search:
-				 	  <select name="search_category">
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-com">
+	          <span class="sr-only">Toggle navigation</span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </button>
+	        <a class="navbar-brand" href="#">
+	          <h4 class="text-uppercase m-y-0">Bollywood Bechdel</h4>
+	        </a>
+	      </div>
 
-						  <option selected disabled>Choose category</option>
-							<option value= "title">Title</option>
-							<option value= "director">Director</option>
-					  </select>
+	      <div class="navbar-collapse collapse" id="navbar-collapse-com">
+	        <ul class="nav navbar-nav navbar-right">
 
-					  <input type="text" name="search" placeholder="search for a movie">
+	          <li>
+	            <form action="/movies/search" method="post">
+	              <select name="search_category" class="custom-select custom-select-sm">
+	                <option selected disabled>Choose category</option>
+	                <option value= "title">Title</option>
+	                <option value= "director">Director</option>
+	              </select>
+	              <input type="text" name="search" placeholder="search for a movie">
+	              <input type="checkbox" name="passes_bechdel" value=1>
+	              	<label>Passes Bechdel Test</label>
+	             	<input type="submit" value="Search">
+	            </form>
+	          </li>
 
- 						<input type="checkbox" name="passes_bechdel" value=1>
-                <label>Passes Bechdel Test</label>
+<!--  -->
 
-	 					<input type="submit" value="Search">
-	 			</form>
-	 		</li>
+<!--  -->
+	          <li class="m-t-0">
+	          	<a class="text-ribbon text-ribbon-primary" href="/results/list">Bechdel Gallery</a>
+	          </li>
 
-	 		<li><a href="/results/list">Bechdel Gallery</a></li>
+	          <li class="m-t-0">
+	          	<a class="text-ribbon text-ribbon-primary" href="/">Home</a>
+	          </li>
 
-			<li><a href="/">Home</a></li>
+	        	<% if @current_user == nil %>
+		          <li class="m-t-0">
+		          	<a class="text-ribbon text-ribbon-primary" href="/users/new"> Create account</a>
+		          </li>
 
-	 	<% if @current_user == nil %>
-		 	<li><a href="/users/new"> Create account</a></li>
+		          <li class="m-t-0">
+		            <form action="/login" method="post">
+		              Login:
+		                <input type="text" name="email" placeholder="email@address.com">
+		                <input type="password" name="password" placeholder="password">
+		                <input type="submit">
+		            </form>
+		          </li>
 
-		 	<li>
-			 	<form action="/login" method="post">
-					Login:
-				    <input type="text" name="email" placeholder="email@address.com">
+		      	<% else %>
+	            <li class="m-t-0">
+	              <a class="text-ribbon text-ribbon-primary" href="/users/<%= @current_user.id %>/view">Profile</a>
+	            </li>
 
-				    <input type="password" name="password" placeholder="password">
+		          <li class="m-t-0">
+			          <a class="text-ribbon text-ribbon-primary" href="/logout">Logout</a>
+		          </li>
+		     		<% end %>
 
-				  	<input type="submit">
-				</form>
-			</li>
-
-	<% else %>
-		  	<li>
-		  		<a href="/users/<%= @current_user.id %>/view"> Profile </a>
-		  	</li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+	</div>
+</div>
 
 
-			<li><a href="/logout"> Logout </a></li>
-	<% end %>
-
-	 </ul>
-	</nav>
+	<!--  -->
 
 	 <% if @error != nil %>
 	  <% @error.each do |error_message| %>
@@ -95,13 +122,13 @@
 
 </body>
 
-<footer>
+<footer style="background: black">
 
 	<h3><a href="https://en.wikipedia.org/wiki/Bechdel_test">Bechdel Test</a></h3>
 	<ol>
-	<li>1. The movie has to have at least two women in it,</li>
-	<li>2. who talk to each other,</li>
-	<li>3. about something besides a man.</li>
+		<li> The movie has to have at least two women in it,</li>
+		<li> who talk to each other,</li>
+		<li> about something besides a man.</li>
 	</ol>
 </footer>
 </html>
