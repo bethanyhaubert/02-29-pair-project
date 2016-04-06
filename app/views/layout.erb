@@ -53,14 +53,23 @@
 	            </form>
 	          </li>
 
-	          <li><a href="/results/list">Bechdel Gallery</a></li>
+<!--  -->
 
-	          <li><a href="/">Home</a></li>
+<!--  -->
+	          <li class="m-t-0">
+	          	<a class="text-ribbon text-ribbon-primary" href="/results/list">Bechdel Gallery</a>
+	          </li>
+
+	          <li class="m-t-0">
+	          	<a class="text-ribbon text-ribbon-primary" href="/">Home</a>
+	          </li>
 
 	        	<% if @current_user == nil %>
-		          <li><a href="/users/new"> Create account</a></li>
+		          <li class="m-t-0">
+		          	<a class="text-ribbon text-ribbon-primary" href="/users/new"> Create account</a>
+		          </li>
 
-		          <li>
+		          <li class="m-t-0">
 		            <form action="/login" method="post">
 		              Login:
 		                <input type="text" name="email" placeholder="email@address.com">
@@ -70,11 +79,13 @@
 		          </li>
 
 		      	<% else %>
-	            <li>
-	              <a href="/users/<%= @current_user.id %>/view"> Profile </a>
+	            <li class="m-t-0">
+	              <a class="text-ribbon text-ribbon-primary" href="/users/<%= @current_user.id %>/view">Profile</a>
 	            </li>
 
-		          <li><a href="/logout"> Logout </a></li>
+		          <li class="m-t-0">
+			          <a class="text-ribbon text-ribbon-primary" href="/logout">Logout</a>
+		          </li>
 		     		<% end %>
 
 	        </ul>
