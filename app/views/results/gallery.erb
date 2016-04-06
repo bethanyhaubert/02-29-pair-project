@@ -1,14 +1,22 @@
 <h1>Bechdel Gallery</h1>
-<img src="/images/icon.png" alt="This is a Bechdel test logo.">
-<% if @bechdel_pass != nil %>
-	<ul>
-	<% @bechdel_pass.each do |movie| %>
-		<li>
-		<a href="/movies/<%= movie.movie_id %>/view">
-		<img src="<%= movie.movie_info.image %>"></a>
-		</li>
-	<%end%>
-	</ul>
-<% elsif @bechdel_pass == nil %>
-<p>No Bechdel results yet.</p>
-<%end%>
+
+<div class="container">
+  <% if @bechdel_pass != nil %>
+    <div class="row">
+      <% @bechdel_pass.each_with_index do |movie, i| %>
+        <div class="col-md-4">
+          <div class="movie_area">
+            <div class="movie">
+              <a href="/movies/<%= movie.movie_id %>/view">
+                <img src="<%= movie.movie_info.image %>">
+              </a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No Bechdel results yet.</p>
+  <%end%>
+</div>
+
