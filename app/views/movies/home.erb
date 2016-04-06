@@ -3,13 +3,13 @@
 
 
 <div class="container">
-
-  <center>
-  <!-- <div class="block text-center"> -->
-    <p><a href="movies/<%= @new_movie.id %>/view"><img src="<%= @new_movie.image %>" alt="<%=@new_movie.title%>"></a></p>
-    <p><a href="/">Get new movie</a></p>
-  <!-- </div> -->
+<div style="background: none;" class="block text-center">
+    <a href="movies/<%= @new_movie.id %>/view"><img src="<%= @new_movie.image %>" alt="<%=@new_movie.title%>"></a>
+    <div class="m-t-0">
+    <a class="text-ribbon text-ribbon-primary" href="/">Get new movie</a>
+    </div>
   </center>
+  </div>
 </div>
 
 
