@@ -1,11 +1,21 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Bollywood Bechdel</title>
-    <link href='http://fonts.googleapis.com/css?family=Fascinate|Rammetto+One|Poller+One|Monofett|Raleway:400,900,100,800|Homemade+Apple' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="/style.css">
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <title>Bollywood Bechdel</title>
+
+    
+      <link href="http://fonts.googleapis.com/css?family=Lora:400,400italic|Roboto:100,300,400,700" rel="stylesheet">
+      <link href="/css/toolkit.css" rel="stylesheet">
+
+      <!-- Your own CSS can go here. -->
+  </head>
 
 <body>
 
@@ -71,6 +81,10 @@
   <!-- The `yield` below is where the contents of a view file are put. -->
   <!-- Then the combined layout + view is sent back to the client. -->
   <%= yield %>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/toolkit.js"></script>
+  <script src="/js/application.js"></script>
+
 </body>
 
 <footer>
@@ -83,3 +97,4 @@
 	</ol>
 </footer>
 </html>
+
