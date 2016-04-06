@@ -18,77 +18,72 @@
   </head>
 
 <body>
+<div class="container">
+	<div class="p-y-lg p-x block block-inverse" style="background: url(https://mrandmrs55.files.wordpress.com/2014/01/shree-420.jpg) top center; background-size: cover">
+	  <nav class="navbar navbar-transparent m-b-0">
+	   <div class="container-fluid">
 
-<div class="p-y-lg p-x" style="background: url(https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjE3JuJvfrLAhXDu4MKHV-XD7YQjRwIBw&url=http%3A%2F%2Funisci24.com%2F363673.html&bvm=bv.118443451,d.amc&psig=AFQjCNEHvNbHjKn9LvG6xV4xvtyPwnXn0w&ust=1460048065670660) top center; background-size: cover">
-  <nav class="navbar navbar-transparent m-b-0">
-   <div class="container-fluid">
-      <div class="navbar-header">
-      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-com">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-com">
+	          <span class="sr-only">Toggle navigation</span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </button>
+	        <a class="navbar-brand" href="#">
+	          <h4 class="text-uppercase m-y-0">Bollywood Bechdel</h4>
+	        </a>
+	      </div>
 
-         <a class="navbar-brand" href="#">
-          <h4 class="text-uppercase m-y-0">Bollywood Bechdel</h4>
-        </a>
-      </div>
-      <div class="navbar-collapse collapse" id="navbar-collapse-com">
-        <ul class="nav navbar-nav navbar-right">
-			 		<li>
-			 			<form action="/movies/search" method="post">
-			 				Search:
-					 	  <select name="search_category">
+	      <div class="navbar-collapse collapse" id="navbar-collapse-com">
+	        <ul class="nav navbar-nav navbar-right">
 
-							  <option selected disabled>Choose category</option>
-								<option value= "title">Title</option>
-								<option value= "director">Director</option>
-						  </select>
+	          <li>
+	            <form action="/movies/search" method="post">
+	              Search:
+	              <select name="search_category">
+	                <option selected disabled>Choose category</option>
+	                <option value= "title">Title</option>
+	                <option value= "director">Director</option>
+	              </select>
+	              <input type="text" name="search" placeholder="search for a movie">
+	              <input type="checkbox" name="passes_bechdel" value=1>
+	              	<label>Passes Bechdel Test</label>
+	             	<input type="submit" value="Search">
+	            </form>
+	          </li>
 
-						  <input type="text" name="search" placeholder="search for a movie">
+	          <li><a href="/results/list">Bechdel Gallery</a></li>
 
-	 						<input type="checkbox" name="passes_bechdel" value=1>
-	                <label>Passes Bechdel Test</label>
+	          <li><a href="/">Home</a></li>
 
-		 					<input type="submit" value="Search">
-		 				</form>
-			 		</li>
+	        	<% if @current_user == nil %>
+		          <li><a href="/users/new"> Create account</a></li>
 
-			 		<li><a href="/results/list">Bechdel Gallery</a></li>
+		          <li>
+		            <form action="/login" method="post">
+		              Login:
+		                <input type="text" name="email" placeholder="email@address.com">
+		                <input type="password" name="password" placeholder="password">
+		                <input type="submit">
+		            </form>
+		          </li>
 
-					<li><a href="/">Home</a></li>
+		      	<% else %>
+	            <li>
+	              <a href="/users/<%= @current_user.id %>/view"> Profile </a>
+	            </li>
 
-			 	<% if @current_user == nil %>
-				 	<li><a href="/users/new"> Create account</a></li>
-
-				 	<li>
-					 	<form action="/login" method="post">
-							Login:
-						    <input type="text" name="email" placeholder="email@address.com">
-
-						    <input type="password" name="password" placeholder="password">
-
-						  	<input type="submit">
-						</form>
-					</li>
-
-			<% else %>
-				  	<li>
-				  		<a href="/users/<%= @current_user.id %>/view"> Profile </a>
-				  	</li>
-
-
-					<li><a href="/logout"> Logout </a></li>
-			<% end %>
-
+		          <li><a href="/logout"> Logout </a></li>
+		     		<% end %>
 
 	        </ul>
-      </div>
-    </div>
-  </nav>
+	      </div>
+	    </div>
+	  </nav>
+	</div>
 </div>
-<!--  -->
+
 
 	<!--  -->
 
