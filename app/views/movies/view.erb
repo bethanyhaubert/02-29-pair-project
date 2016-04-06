@@ -6,10 +6,10 @@
 	<p> This movie has not yet been rated using the Bechdel test. </p>
 
 <% elsif @movie.result.is_bechdel == true %>
-	<h3 style="color:green;"> This movie passes the Bechdel test! </h3>
+	<h3> This movie passes the Bechdel test! </h3>
 
 <% else @movie.result.is_bechdel == false %>
-	<h3 style="color:red;"> This movie does not pass the Bechdel test. >:-( </h3>
+	<h3> This movie does not pass the Bechdel test. >:-( </h3>
 
 <% end %>
 
