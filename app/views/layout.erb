@@ -11,124 +11,109 @@
     <title>Bollywood Bechdel</title>
 
     
-      <link href="http://fonts.googleapis.com/css?family=Lora:400,400italic|Roboto:100,300,400,700" rel="stylesheet">
-      <link href="/css/toolkit-bold.min.css" rel="stylesheet">
-
-      <!-- Your own CSS can go here. -->
-      <style type="text/css">
-        .movie_area {
-          max-height: 400px;
-          margin: 15px;
-          overflow: hidden;
-        }
-      </style>
+      <link href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
+      <link href="/css/toolkit-minimal.css" rel="stylesheet">
+      <link href="/css/global.css" rel="stylesheet">
   </head>
 
 <body>
-<div class="p-y-lg p-x block block-inverse" style="background: url(https://mrandmrs55.files.wordpress.com/2014/01/shree-420.jpg) top center; background-size: cover">
 
-<div class="container">
-	<div class="p-y-lg p-x block block-inverse" style="background: black top center; background-size: cover">
-	  <nav class="navbar navbar-transparent m-b-0">
-	   <div class="container-fluid">
+<nav class="navbar navbar-default navbar-static-top navbar-padded text-uppercase app-navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed p-x-0" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <span>Bollywood Bechdel</span>
+      </a>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li >
+          <a href="/results/list">Bechdel Gallery</a>
+        </li>
 
-	      <div class="navbar-header">
-	        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-com">
-	          <span class="sr-only">Toggle navigation</span>
-	          <span class="icon-bar"></span>
-	          <span class="icon-bar"></span>
-	          <span class="icon-bar"></span>
-	        </button>
-	        <a class="navbar-brand" href="#">
-	          <h2 style="color:white;" class="text-uppercase m-y-0">Bollywood Bechdel</h2>
-	        </a>
-	      </div>
+        <% if @current_user == nil %>
+        	<li class="active">
+	          <a href="/users/new">Create account</a>
+	        </li>
 
-	      <div class="navbar-collapse collapse" id="navbar-collapse-com">
-	        <ul class="nav navbar-nav navbar-right">
+	        <li class="active">
+	          <a href="#">Log in</a>
+	        </li>
+	      <% else %>
+	       	<li class="active">
+	       		<a href="/users/<%= @current_user.id %>/view">Profile</a>
+	       	</li>
 
-	          <li>
-	            <form action="/movies/search" method="post">
-	              <select name="search_category" class="custom-select custom-select-sm">
-	                <option selected disabled>Choose category</option>
-	                <option value= "title">Title</option>
-	                <option value= "director">Director</option>
-	              </select>
-	              <input type="text" name="search" placeholder="search for a movie">
-	              <input type="checkbox" name="passes_bechdel" value=1>
-	              	<label>Passes Bechdel Test</label>
-	             	<input type="submit" value="Search">
-	            </form>
-	          </li>
+	       	<li>
+	       		<a href="/logout">Logout</a>
+	       	</li>
+        <% end %>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
 
-<!--  -->
+<div class="block block-inverse block-bordered-lg text-center block-bollywood-bg">
+  <div class="container-fluid">
+    <p class="lead m-b-md block-bollywood-lead">
+      Find a Bollywood movie with <strong>strong</strong> female characters.
+    </p>
 
-<!--  -->
-	          <li class="m-t-0">
-	          	<a class="text-ribbon text-ribbon-primary" href="/results/list">Bechdel Gallery</a>
-	          </li>
+    <form action="/movies/search" method="post" class="form-inline">
+      <select name="search_category" class="custom-select search-form-input-margin">
+        <option selected disabled>Choose category</option>
+        <option value= "title">Title</option>
+        <option value= "director">Director</option>
+      </select>
 
-	          <li class="m-t-0">
-	          	<a class="text-ribbon text-ribbon-primary" href="/">Home</a>
-	          </li>
+      <input type="text" name="search" placeholder="search for a movie" class="form-control search-form-input-margin">
 
-	        	<% if @current_user == nil %>
-		          <li class="m-t-0">
-		          	<a class="text-ribbon text-ribbon-primary" href="/users/new"> Create account</a>
-		          </li>
+      <div class="checkbox-inline custom-control custom-checkbox search-form-input-margin">
+        <label>
+          <input type="checkbox" name="passes_bechdel" value="1">
+          <span class="custom-control-indicator"></span>
+          Passes Bechdel Test
+        </label>
+      </div>
 
-		          <li class="m-t-0">
-		            <form action="/login" method="post">
-		              Login:
-		                <input type="text" name="email" placeholder="email@address.com">
-		                <input type="password" name="password" placeholder="password">
-		                <input type="submit">
-		            </form>
-		          </li>
-
-		      	<% else %>
-	            <li class="m-t-0">
-	              <a class="text-ribbon text-ribbon-primary" href="/users/<%= @current_user.id %>/view">Profile</a>
-	            </li>
-
-		          <li class="m-t-0">
-			          <a class="text-ribbon text-ribbon-primary" href="/logout">Logout</a>
-		          </li>
-		     		<% end %>
-
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+      <div class="search-form-actions">
+      	<button class="btn btn-primary search-form-actions__button">
+	      	Search
+	      </button>
+      </div>
+    </form>
+  </div>
 </div>
 
+<!-- The `yield` below is where the contents of a view file are put. -->
+<!-- Then the combined layout + view is sent back to the client. -->
+<%= yield %>
 
-	<!--  -->
+<div class="block block-inverse">
+  <div class="container">
+  	<h3>The Bechdel Test</h3>
 
-	 <% if @error != nil %>
-	  <% @error.each do |error_message| %>
-	  <p style="color:red;">*<%= error_message %> </p>
-	   <% end %>
-	  <% end %>
+  	<h4>
+  		1. The movie has to have at least two women in it...<br>
+  		2. ...who talk to each other<br>
+  		3. ...about something besides a man.
+  	</h4>
 
+  	<p><a href="https://en.wikipedia.org/wiki/Bechdel_test">Find out more about the Bechdel Test.</a></p>
+  </div>
+</div>
 
-  <!-- The `yield` below is where the contents of a view file are put. -->
-  <!-- Then the combined layout + view is sent back to the client. -->
-  <%= yield %>
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/toolkit.js"></script>
-  <script src="/js/application.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/toolkit.js"></script>
+<script src="/js/application.js"></script>
 
 </body>
 
-<footer style="background: black">
-
-	<h3><a href="https://en.wikipedia.org/wiki/Bechdel_test">Bechdel Test</a></h3>
-	<ol>
-		<li> The movie has to have at least two women in it,</li>
-		<li> who talk to each other,</li>
-		<li> about something besides a man.</li>
-	</ol>
-</footer>
 </html>
 

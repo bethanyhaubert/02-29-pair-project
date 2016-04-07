@@ -1,0 +1,18 @@
+.search-form-actions{
+  clear: both;
+  padding-top: 20px;
+}
+.search-form-actions__button{
+  width: 30%;
+}
+.search-form-input-margin{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.block-bollywood-bg{
+  background: url(/images/shree-420.jpg) center -240px;
+  background-size: cover;
+}
+.block-bollywood-lead{
+  text-shadow: 17px 0px 10px #000;
+}
