@@ -1,3 +1,23 @@
+.bechdel-test-info {
+  background-color: rgb(27, 28, 29);
+  color: #999;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.bechdel-test-info__lines{
+  line-height: 1.5;
+}
+
+.movie-result {
+  padding-top: 20px;
+}
+.bollywood-title{
+  margin-bottom: 30px;
+}
+.get-another-movie{
+  margin-top: 30px;
+}
+
 .search-form-actions{
   clear: both;
   padding-top: 20px;
@@ -9,9 +29,12 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+/* todo this gets ugly on small screens */
 .block-bollywood-bg{
   background: url(/images/shree-420.jpg) center -240px;
   background-size: cover;
+  border-top: 1px solid #666;
 }
 .block-bollywood-lead{
   text-shadow: 17px 0px 10px #000;

@@ -1,16 +1,17 @@
+<div class="block block-inverse movie-result">
+  <div class="container text-center">
+    <h1 class="m-b-sm text-uppercase bollywood-title">
+      <%=@new_movie.title%>
+    </h1>
 
+    <!-- <p class="lead m-b-lg p-b-md">TODO Get synopsis.</p> -->
 
+    <a href="movies/<%= @new_movie.id %>/view">
+      <img src="<%= @new_movie.image %>" alt="<%=@new_movie.title%>">
+    </a>
 
-
-<div class="container">
-<div style="background: none;" class="block text-center">
-    <a href="movies/<%= @new_movie.id %>/view"><img src="<%= @new_movie.image %>" alt="<%=@new_movie.title%>"></a>
-    <div class="m-t-0">
-    <a class="text-ribbon text-ribbon-primary" href="/">Get new movie</a>
+    <div class="get-another-movie">
+      <a href="/" class="btn btn-lg btn-primary-outline">Get Another Movie</a>
     </div>
-  </center>
   </div>
 </div>
-
-
-

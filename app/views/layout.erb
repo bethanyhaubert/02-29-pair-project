@@ -59,6 +59,24 @@
   </div>
 </nav>
 
+<div class="block block-inverse bechdel-test-info">
+  <div class="container">
+    <h3>The Bechdel Test</h3>
+
+    <h4 class="bechdel-test-info__lines">
+      1. The movie has to have at least two women in it...<br>
+      2. ...who talk to each other<br>
+      3. ...about something besides a man.
+    </h4>
+
+    <p><a href="https://en.wikipedia.org/wiki/Bechdel_test">Find out more about the Bechdel Test.</a></p>
+  </div>
+</div>
+
+<!-- The `yield` below is where the contents of a view file are put. -->
+<!-- Then the combined layout + view is sent back to the client. -->
+<%= yield %>
+
 <div class="block block-inverse block-bordered-lg text-center block-bollywood-bg">
   <div class="container-fluid">
     <p class="lead m-b-md block-bollywood-lead">
@@ -83,29 +101,11 @@
       </div>
 
       <div class="search-form-actions">
-      	<button class="btn btn-primary search-form-actions__button">
-	      	Search
-	      </button>
+        <button class="btn btn-primary search-form-actions__button">
+          Search
+        </button>
       </div>
     </form>
-  </div>
-</div>
-
-<!-- The `yield` below is where the contents of a view file are put. -->
-<!-- Then the combined layout + view is sent back to the client. -->
-<%= yield %>
-
-<div class="block block-inverse">
-  <div class="container">
-  	<h3>The Bechdel Test</h3>
-
-  	<h4>
-  		1. The movie has to have at least two women in it...<br>
-  		2. ...who talk to each other<br>
-  		3. ...about something besides a man.
-  	</h4>
-
-  	<p><a href="https://en.wikipedia.org/wiki/Bechdel_test">Find out more about the Bechdel Test.</a></p>
   </div>
 </div>
 
