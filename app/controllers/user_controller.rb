@@ -41,7 +41,7 @@ end
 MyApp.post "/users/:id/edit" do
   session["temporary_error_message"] = nil
   if @user == @current_user
-    @user.assign_attributes({name: params['name'], password: params['password']})
+    @user.assign_attributes({name: params['name'], password: params['password'],email: params['email']})
     @user.empty_errors
     if @user.is_valid == true
       @user.save
