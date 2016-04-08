@@ -1,3 +1,7 @@
+MyApp.get "/login" do
+  erb :"users/login"
+end
+
 MyApp.post "/login" do
 
   session["temporary_error_message"] = nil

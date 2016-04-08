@@ -1,22 +1,39 @@
-<h1>Bechdel Gallery</h1>
+<div class="block block-inverse bechdel-test-info">
+  <div class="container">
+    <h3>The Bechdel Test</h3>
 
-<div class="container">
-  <% if @bechdel_pass != nil %>
-    <div class="row">
-      <% @bechdel_pass.each_with_index do |movie, i| %>
-        <div class="col-md-4">
-          <div class="movie_area">
-            <div class="movie">
-              <a href="/movies/<%= movie.movie_id %>/view">
-                <img src="<%= movie.movie_info.image %>">
-              </a>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  <% else %>
-    <p>No Bechdel results yet.</p>
-  <%end%>
+    <h4 class="bechdel-test-info__lines">
+      1. The movie has to have at least two women in it...<br>
+      2. ...who talk to each other<br>
+      3. ...about something besides a man.
+    </h4>
+
+    <p><a href="https://en.wikipedia.org/wiki/Bechdel_test">Find out more about the Bechdel Test.</a></p>
+  </div>
 </div>
 
+<div class="block block-inverse movie-result">
+  <div class="container">
+    <h1 class="m-b-sm text-uppercase bollywood-title">
+      Bechdel Gallery
+    </h1>
+
+    <% if @bechdel_pass != nil %>
+      <div class="row">
+        <% @bechdel_pass.each_with_index do |movie, i| %>
+          <div class="col-md-4">
+            <div class="movie_area">
+              <div class="movie">
+                <a href="/movies/<%= movie.movie_id %>/view">
+                  <img src="<%= movie.movie_info.image %>">
+                </a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>No Bechdel results yet.</p>
+    <%end%>
+  </div>
+</div>

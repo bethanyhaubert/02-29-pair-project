@@ -21,6 +21,7 @@ MyApp.post "/users/create" do
   @user.user_exists
   if @user.is_valid == true
     @user.save
+    session["user_id"] = @user.id
     redirect "/users/#{@user.id}/view"
   else
     session["temporary_error_message"] = @user.get_errors

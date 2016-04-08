@@ -1,36 +1,55 @@
-<h1> Movie Results </h1>
+<div class="block block-inverse bechdel-test-info">
+  <div class="container">
+    <h3>The Bechdel Test</h3>
 
+    <h4 class="bechdel-test-info__lines">
+      1. The movie has to have at least two women in it...<br>
+      2. ...who talk to each other<br>
+      3. ...about something besides a man.
+    </h4>
 
-	<% if @list_of_movies != nil && @bechdel == "1" %>
+    <p><a href="https://en.wikipedia.org/wiki/Bechdel_test">Find out more about the Bechdel Test.</a></p>
+  </div>
+</div>
 
-		<ul>
-		<% @list_of_movies.each do |movie| %>
+<div class="block block-inverse movie-result">
+  <div class="container">
+    <h1 class="m-b-sm text-uppercase bollywood-title">
+      Search Results
+    </h1>
 
-			<% if movie.result.is_bechdel == true %>
-				<li>
-					<a href="/movies/<%= movie.id %>/view"><%= movie.title %></a>
-				</li>
-			<% end %>
-
-		</ul>
-
-	<% end %>
-		
-
-	<% elsif @list_of_movies != nil && @bechdel == "2" %>
-
-		<ul>
-		<% @list_of_movies.each do |movie| %>
-
-			<li>
-				<a href="/movies/<%= movie.id %>/view"><%= movie.title %></a>
-			</li>
-
-		<% end %>
-		</ul>
-
-	<% else %>
-
-	<p>No movies match your search.</p>
-
-<%end%>
+    <% if @list_of_movies != nil && @bechdel == "1" %>
+    	<div class="row">
+    		<% @list_of_movies.each do |movie| %>
+    			<% if movie.result.is_bechdel == true %>
+    				<div class="col-md-4">
+    				  <div class="movie_area">
+    				    <div class="movie">
+    				      <a href="/movies/<%= movie.id %>/view">
+    				        <img src="<%= movie.image %>">
+    				      </a>
+    				    </div>
+    				  </div>
+    				</div>
+    			<% end %>
+  			<% end %>
+    	</div>
+    <% elsif @list_of_movies != nil && @bechdel == "2" %>
+    	<div class="row">
+    		<% @list_of_movies.each do |movie| %>
+    			<div class="col-md-4">
+    			  <div class="movie_area">
+    			    <div class="movie">
+    			      <a href="/movies/<%= movie.id %>/view">
+    			        <img src="<%= movie.image %>">
+    			      </a>
+    			    </div>
+    			  </div>
+    			</div>
+  			<% end %>
+    	</div>
+    <% else %>
+    	<p>No movies match your search.</p>
+    <%end%>
+   </div>
+</div>

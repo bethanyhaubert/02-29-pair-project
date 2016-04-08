@@ -1,12 +1,7 @@
 <div class="container">
-  <h3>Create new user:</h3>
+  <h3>Log in:</h3>
 
-  <form action="/users/create" method="post">
-    <div class="form-group">
-      <label for="name" class="control-label">Name:</label>
-      <input class="form-control" type="text" name="name" placeholder="name">
-    </div>
-
+  <form action="/login" method="post">
     <div class="form-group">
       <label for="email" class="control-label">Email Address:</label>
       <input class="form-control" type="text" name="email" placeholder="email@address.com">
@@ -18,7 +13,7 @@
     </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-default">Sign Up</button>
+      <button type="submit" class="btn btn-default">Sign In</button>
     </div>
   </form>
 </div>

@@ -1,51 +1,98 @@
-<h1><u><%= @movie.title %> </h1></u>
-<h3><i>directed by <%= @movie.director %> </i></h3>
-<img src="<%= @movie.image %>">
+<div class="block block-bordered-lg block-inverse">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-sm-6">
+      	<h1 class="m-b-sm text-uppercase bollywood-title bollywood-title--no-margin-top">
+      	  <%= @movie.title %><br>
+      	  <small>directed by <%= @movie.director %></small>
+      	</h1>
 
-<% if !@movie.result %>	
-	<p> This movie has not yet been rated using the Bechdel test. </p>
+      	<!-- <p class="lead m-b-lg p-b-md">TODO Get synopsis.</p> -->
 
-<% elsif @movie.result.is_bechdel == true %>
-	<h3> This movie passes the Bechdel test! </h3>
+      	<img src="<%= @movie.image %>" alt="<%=@movie.title%>">
+      </div>
 
-<% else @movie.result.is_bechdel == false %>
-	<h3> This movie does not pass the Bechdel test. >:-( </h3>
+      <div class="col-md-5 col-sm-6 text-sm-left">
+        <p class="lead bechdel-status">
+        	<% if !@movie.result %>	
+        		This movie has not yet been rated using the Bechdel test.
+        	<% elsif @movie.result.is_bechdel == true %>
+        		This movie <strong>passes</strong> the Bechdel test!
 
-<% end %>
+        	<% else @movie.result.is_bechdel == false %>
+        		This movie <strong>does not pass</strong> the Bechdel test.
+        	<% end %>
+        </p>
 
+        <% if !@movie.result %>
+        	
+        	<h4>Add Bechdel rating:</h4>
+      		<p>Please select the criteria that this movie fulfills:</p>
 
-<% if !@movie.result %>
-	
-	<h3>Add Bechdel rating:</h3>
-		<p>Please select the criteria that this movie fulfills:</p>
+        	<form action="/results/<%= @movie.id %>/add" method="post">
 
-	<form action="/results/<%= @movie.id %>/add" method="post">
-		<ol>
-		  <li>The movie has to have at least two women in it: <input type="checkbox" name="q1" value="true"></li>
-		  <li>Those women talk to each other: <input type="checkbox" name="q2" value="true"></li>
-		  <li>About something besides a man:<input type="checkbox" name="q3" value="true"></li>
-		</ol>
+        		<div class="checkbox custom-control custom-checkbox">
+        		  <label>
+        		    <input type="checkbox" name="q1" value="true">
+        		    <span class="custom-control-indicator"></span>
+        		    The movie has to have at least two named women in it
+        		  </label>
+        		</div>
 
-		<input type="submit">
-	  
-	</form>
+        		<div class="checkbox custom-control custom-checkbox">
+        		  <label>
+        		    <input type="checkbox" name="q2" value="true">
+        		    <span class="custom-control-indicator"></span>
+        		    Those women talk to each other
+        		  </label>
+        		</div>
 
-<% else %>
-	<h3>Edit Bechdel rating:</h3>
-		<p>Please select the criteria that this movie fulfills:</p>
+        		<div class="checkbox custom-control custom-checkbox">
+        		  <label>
+        		    <input type="checkbox" name="q3" value="true">
+        		    <span class="custom-control-indicator"></span>
+        		    About something besides a man
+        		  </label>
+        		</div>
 
-	<form action="/results/<%= @movie.id %>/edit" method="post">
-		<ol>
-		  <li>The movie has to have at least two women in it: <input type="checkbox" name="q1" value="true"></li>
-		  <li>Those women talk to each other: <input type="checkbox" name="q2" value="true"></li>
-		  <li>About something besides a man:<input type="checkbox" name="q3" value="true"></li>
-		</ol>
+        		<input type="submit" class="btn btn-primary btn-sm">
+        	  
+        	</form>
 
-		<input type="submit">
-	  
-	</form>
+        <% else %>
+        	<h4>Edit Bechdel rating:</h4>
+        	<p>Please select the criteria that this movie fulfills:</p>
 
-<% end %>
+        	<form action="/results/<%= @movie.id %>/edit" method="post">
+        		<div class="checkbox custom-control custom-checkbox">
+        		  <label>
+        		    <input type="checkbox" name="q1" value="true" <%= "checked" if @movie.result.q1 %>>
+        		    <span class="custom-control-indicator"></span>
+        		    The movie has to have at least two named women in it
+        		  </label>
+        		</div>
 
+        		<div class="checkbox custom-control custom-checkbox">
+        		  <label>
+        		    <input type="checkbox" name="q2" value="true" <%= "checked" if @movie.result.q2 %>>
+        		    <span class="custom-control-indicator"></span>
+        		    Those women talk to each other
+        		  </label>
+        		</div>
 
+        		<div class="checkbox custom-control custom-checkbox">
+        		  <label>
+        		    <input type="checkbox" name="q3" value="true" <%= "checked" if @movie.result.q3 %>>
+        		    <span class="custom-control-indicator"></span>
+        		    About something besides a man
+        		  </label>
+        		</div>
 
+        		<input type="submit" class="btn btn-primary btn-sm">
+        	</form>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

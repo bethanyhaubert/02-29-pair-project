@@ -43,7 +43,7 @@
 	        </li>
 
 	        <li class="active">
-	          <a href="#">Log in</a>
+	          <a href="/login">Log in</a>
 	        </li>
 	      <% else %>
 	       	<li class="active">
@@ -59,19 +59,16 @@
   </div>
 </nav>
 
-<div class="block block-inverse bechdel-test-info">
+<% if @error != nil %>
   <div class="container">
-    <h3>The Bechdel Test</h3>
-
-    <h4 class="bechdel-test-info__lines">
-      1. The movie has to have at least two women in it...<br>
-      2. ...who talk to each other<br>
-      3. ...about something besides a man.
-    </h4>
-
-    <p><a href="https://en.wikipedia.org/wiki/Bechdel_test">Find out more about the Bechdel Test.</a></p>
+    <% @error.each do |error_message| %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> <%= error_message %>
+      </div>
+    <% end %>
   </div>
-</div>
+<% end %>
 
 <!-- The `yield` below is where the contents of a view file are put. -->
 <!-- Then the combined layout + view is sent back to the client. -->

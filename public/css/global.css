@@ -14,6 +14,9 @@
 .bollywood-title{
   margin-bottom: 30px;
 }
+.bollywood-title.bollywood-title--no-margin-top{
+  margin-top: 0;
+}
 .get-another-movie{
   margin-top: 30px;
 }
@@ -38,4 +41,10 @@
 }
 .block-bollywood-lead{
   text-shadow: 17px 0px 10px #000;
+}
+
+.bechdel-status{
+  margin-top: 51px;
+  color: #999;
+  font-size: 20px;
 }

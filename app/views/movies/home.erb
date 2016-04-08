@@ -1,7 +1,22 @@
+<div class="block block-inverse bechdel-test-info">
+  <div class="container">
+    <h3>The Bechdel Test</h3>
+
+    <h4 class="bechdel-test-info__lines">
+      1. The movie has to have at least two women in it...<br>
+      2. ...who talk to each other<br>
+      3. ...about something besides a man.
+    </h4>
+
+    <p><a href="https://en.wikipedia.org/wiki/Bechdel_test">Find out more about the Bechdel Test.</a></p>
+  </div>
+</div>
+
 <div class="block block-inverse movie-result">
   <div class="container text-center">
     <h1 class="m-b-sm text-uppercase bollywood-title">
-      <%=@new_movie.title%>
+      <%=@new_movie.title%><br>
+      <small>directed by <%= @new_movie.director %></small>
     </h1>
 
     <!-- <p class="lead m-b-lg p-b-md">TODO Get synopsis.</p> -->

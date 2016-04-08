@@ -1,20 +1,30 @@
-<h1> User profile </h1>
+<div class="container">
+  <h3>Your Profile</h3>
 
-<h2> <%= @user.name %> </h2>
+  <form action="/users/<%= @user.id %>/edit" method="post">
+    <div class="form-group">
+      <label for="name" class="control-label">Name:</label>
+      <input class="form-control" type="text" name="name" placeholder="name" value="<%= @user.name %>">
+    </div>
 
+    <div class="form-group">
+      <label for="email" class="control-label">Email Address:</label>
+      <input class="form-control" type="text" name="email" placeholder="email@address.com" value="<%= @user.email %>">
+    </div>
 
-<h3>Edit user:</h3>
+    <div class="form-group">
+      <label for="name" class="control-label">Password:</label>
+      <input class="form-control" type="password" name="password">
+    </div>
 
-<form action="/users/<%= @user.id %>/edit" method="post">
-	Name:
-	  <input type="text" name="name" value="<%= @user.name %>"> </br>
-	Password:
-	  <input type="password" name="password" value="<%= @user.password%>"></br>
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">Save</button>
+    </div>
+  </form>
 
-	  <input type="submit"></br> 
-</form>
-
-<form action="/users/<%= @user.id %>/delete" method="post">
-
-	<input type="submit" value="Delete">
-</form>
+  <form action="/users/<%= @user.id %>/delete" method="post">
+    <div class="form-group">
+      <button type="submit" class="btn btn-danger">Delete Account</button>
+    </div>
+  </form>
+</div>
